@@ -25,7 +25,7 @@ export const Navbar: React.FC = () => {
             <h1 className="font-bebasNeue text-lg md:text-3xl text-white">EMAR</h1>
             <img 
     src="/q.png" 
-    alt="Logo" 
+    alt="Logo"
     className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] object-contain -ml-[12px] -mt-[7px]"
   />
           </div>
