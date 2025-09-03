@@ -28,8 +28,8 @@ export const Navbar: React.FC = () => {
       </nav>
   
       {/* Center Icon */}
-      <div className="w-[60px] h-[40px] rounded-xl flex items-center justify-center">
-        <img src="/q.png" alt="Center Icon" className="w-[105px] h-[70px]" />
+      <div className="w-[100px] h-[35px] rounded-xl flex items-center justify-center">
+        <img src="/q.png" alt="Center Icon" className="w-[70px] h-[70px]" />
       </div>
   
       {/* Menu Items - Right */}
