@@ -5,11 +5,23 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import SmoothScroll from "./components/ui/SmoothScroll";
+import AOS from 'aos'
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+
+
+
+const App = () => {
+  useEffect(() => {
+    AOS.init({
+      easing: "linear", // Easing type
+      once: true, // Run only once
+    });
+  }, []);
+  return(
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -24,6 +36,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
-);
+  )
+}
 
 export default App;

@@ -7,37 +7,51 @@ const SmoothScroll = ({ children }) => {
 
   const scrollY = useRef(0);
   const targetY = useRef(0);
+  const tickerRef = useRef(null);
+
+  // Function to update spacer height
+  const updateHeight = () => {
+    if (containerRef.current) {
+      setContentHeight(containerRef.current.scrollHeight);
+    }
+  };
 
   useEffect(() => {
-    const updateHeight = () => {
-      setContentHeight(containerRef.current.getBoundingClientRect().height);
-    };
+    // Update height initially and after images load
     updateHeight();
     window.addEventListener('resize', updateHeight);
+
+    // In case of images/fonts loading later
+    window.addEventListener('load', updateHeight);
 
     const onScroll = () => {
       targetY.current = window.scrollY;
     };
     window.addEventListener('scroll', onScroll);
 
-    gsap.ticker.add(() => {
-      scrollY.current += (targetY.current - scrollY.current) * 0.02; // smooth factor
+    // Store ticker reference so we can remove it later
+    const tickerFn = () => {
+      scrollY.current += (targetY.current - scrollY.current) * 0.08; // smoother
       gsap.set(containerRef.current, { y: -scrollY.current });
-    });
+    };
+    tickerRef.current = tickerFn;
+    gsap.ticker.add(tickerFn);
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', updateHeight);
-      gsap.ticker.remove(() => {});
+      window.removeEventListener('load', updateHeight);
+      window.removeEventListener('scroll', onScroll);
+      if (tickerRef.current) gsap.ticker.remove(tickerRef.current);
     };
   }, []);
 
   return (
     <>
-      {/* Spacer div so browser keeps normal scroll height */}
+      {/* Spacer div so browser can scroll normally */}
       <div style={{ height: contentHeight }} />
-      {/* Actual content */}
+      {/* Fixed container for smooth transform */}
       <div
+        ref={containerRef}
         style={{
           position: 'fixed',
           top: 0,
@@ -45,7 +59,6 @@ const SmoothScroll = ({ children }) => {
           width: '100%',
           willChange: 'transform',
         }}
-        ref={containerRef}
       >
         {children}
       </div>

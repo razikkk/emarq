@@ -1,6 +1,8 @@
 import React from 'react';
 import { HighlightTag } from './HighlightTag';
 import { Button } from './ui/button';
+import ShinyText from './animations/ShinyText';
+
 
 export const HeroSection: React.FC = () => {
   return (
@@ -38,7 +40,11 @@ export const HeroSection: React.FC = () => {
         Connect With Us
       </Button>
       <Button variant="cta" className="h-12 px-5 rounded-lg">
-        What is Emarq?
+       <ShinyText
+       text="What is Emarq"
+       disabled={false}
+       speed={3}
+       className='custom-class'/>
       </Button>
     </div>
 

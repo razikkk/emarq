@@ -162,7 +162,7 @@ html, body {
   }
 }
 
-@keyframes blob {
+/* @keyframes blob {
   0% {
     transform: scale(1) translate(0, 0);
   }
@@ -175,4 +175,4 @@ html, body {
   100% {
     transform: scale(1) translate(0, 0);
   }
-}
+} */

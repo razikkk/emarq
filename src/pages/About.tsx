@@ -2,16 +2,17 @@ import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import {  useScroll, motion, useTransform } from 'framer-motion';
 import { HighlightTag } from '@/components/HighlightTag';
+import ScrollReveal from '../components/animations/ScrollReveal'
 
 const About = () => {
-  const element = useRef(null)
-  const { scrollYProgress} = useScroll({
-    target: element,
-    offset: ["start end", "start 0.25"]
-  })
+  // const element = useRef(null)
+  // const { scrollYProgress} = useScroll({
+  //   target: element,
+  //   offset: ["start end", "start 0.25"]
+  // })
 
-const value = 'Emarq Marketing & Production L.L.C is a Dubai-based agency combining creative storytelling, digital marketing, and data-driven strategies to help brands grow, engage audiences, and achieve measurable results.'
-const words = value.split("")
+// const value = 'Emarq Marketing & Production L.L.C is a Dubai-based agency combining creative storytelling, digital marketing, and data-driven strategies to help brands grow, engage audiences, and achieve measurable results.'
+// const words = value.split("")
   return (
     <div>
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center space-y-8">
@@ -45,14 +46,17 @@ const words = value.split("")
       </div>
 
         {/* Heading */}
-        <h2 ref={element} className=" relative text-4xl lg:text-5xl font-normal leading-tight tracking-[-2px] max-w-3xl">
-          {words.map((word,i)=>{
-            const start = i / words.length
-            const end = start + (1 / words.length)
-            console.log([start,end])
-          return <Word key={i} range={[start,end]} progress={scrollYProgress}>{word}</Word>
-          })}
-        </h2>
+        {/* <h2  className=" relative text-4xl lg:text-5xl font-normal leading-tight tracking-[-2px] max-w-3xl"> */}
+          <ScrollReveal 
+          baseOpacity={0}
+          enableBlur={true}
+          baseRotation={5}
+          blurStrength={10}
+          textClassName="text-4xl lg:text-5xl font-normal leading-tight tracking-[-2px] max-w-3xl"
+          >
+        'Emarq Marketing & Production L.L.C is a Dubai-based agency combining creative storytelling, digital marketing, and data-driven strategies to help brands grow, engage audiences, and achieve measurable results.'
+        </ScrollReveal>
+        {/* </h2> */}
 
         {/* Button */}
         <Button className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
@@ -70,12 +74,12 @@ const words = value.split("")
 
 export default About;
 
-const Word = ({children, range, progress})=>{
-  const opacity = useTransform(progress, range, [0,1])
-  return(
-    <span className="inline-block relative" >
-      <span className='absolute opacity-[0.1]'>{children}</span>
-    <motion.span style={{opacity}}>{children}</motion.span>
-    </span>
-  )
-}
+{/* // const Word = ({children, range, progress})=>{ */}
+{/* //   const opacity = useTransform(progress, range, [0,1])
+//   return(
+//     <span className="inline-block relative" >
+//       <span className='absolute opacity-[0.1]'>{children}</span>
+//     <motion.span style={{opacity}}>{children}</motion.span>
+//     </span>
+//   )
+// } */}

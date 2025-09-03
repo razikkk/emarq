@@ -19,6 +19,9 @@ import { useEffect, useState } from "react";
 import {motion} from 'framer-motion'
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import { BackgroundGradientAnimation } from "@/components/ui/shadcn-io/background-gradient-animation";
+import GradualBlur from "@/components/animations/GradualBlur";
+import LightRays from "@/components/animations/LightRays";
+import Particles from "@/components/animations/Particles";
 
 
 
@@ -39,8 +42,12 @@ const Index = () => {
 
   return (
    
-    <div className=" min-h-screen text-white overflow-x-hidden ">
+    
+    <div className="min-h-screen text-white overflow-x-hidden "
+    >
+    
       <BackgroundGradientAnimation/>
+     
       <motion.div
       className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999]"
       animate={{
@@ -49,14 +56,18 @@ const Index = () => {
       }}
       transition={{type:'spring', stiffness:80, damping:15}}
       />
-      <AnimatedLogo/>
+
+      {/* <AnimatedLogo/> */}
       <SmoothScroll>
+     
   <Navbar />
   <HeroSection />
 
   <main>
+  
     {/* About Section */}
     <section className="rotate-[3.141592653589793rad] flex w-full max-w-[1440px] mx-auto h-1" />
+    
     <section
       id="about"
       className="relative z-10 w-full max-w-[1440px] mx-auto px-5 pt-[40px] pb-[70px] max-md:pt-[30px] max-md:pb-[40px]"
@@ -135,7 +146,30 @@ const Index = () => {
   </main>
 
   <Footer />
+ 
+
+   
+  
 </SmoothScroll>
+<GradualBlur
+      target=".min-h-screen"
+      position="bottom"
+      height="6rem"
+      strength={2}
+      divCount={5}
+      curve="bezier"
+      exponential={true}
+      opacity={1}
+      style={{
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        height: "6rem",
+        pointerEvents: "none",
+        zIndex: 50,
+      }}
+    />
 </div>
   );
 };
