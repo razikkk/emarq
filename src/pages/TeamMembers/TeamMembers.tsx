@@ -3,17 +3,18 @@ import { TeamMemberCard } from '@/components/TeamMemberCard';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { HighlightTag } from '@/components/HighlightTag';
 
 const teamMembers = [
     {
       name: "Sinan",
       role: "Co-Founder, CEO",
-      image: "/image---o8p5wc5w3lqe0e9pvlcnxms2quk-png.png",
+      image: "/logo.jpg",
     },
     {
       name: "Lena Williams",
       role: "Co-Founder, CTO",
-      image: "/image---woman-1.png",
+      image: "/logo.jpg",
     },
     {
       name: "Maya Johnson",
@@ -41,14 +42,32 @@ const TeamMembers = () => {
     <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8">
   {/* Keep original image size and styling, but center it */}
   <div className="flex justify-center mt-[120px] sm:mt-[160px] md:mt-[200px] lg:mt-[220px]">
-    <div className="flex flex-col relative aspect-[3.122] w-24 sm:w-28 md:w-32 max-w-full overflow-hidden rounded-[40px]">
-      <img
+     {/* <div className="flex flex-col relative aspect-[3.122] w-24 sm:w-28 md:w-32 max-w-full overflow-hidden rounded-[40px]">
+       <img
         src="https://api.builder.io/api/v1/image/assets/TEMP/58b56afbf83ade4953169199f3377be3d12fff87?placeholderIfAbsent=true"
         className="absolute h-full w-full object-cover inset-0"
         alt=""
-      />
-      <div className="relative border flex shrink-0 h-[41px] rounded-[40px] border-[rgba(255,255,255,0.05)] border-solid" />
-    </div>
+      /> 
+       <div className="relative border flex shrink-0 h-[41px] rounded-[40px] border-[rgba(255,255,255,0.05)] border-solid" /> 
+     </div>  */}
+    <div className="flex justify-center">
+        <HighlightTag
+          variant="dotted"
+          className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+          title={
+            <span className="bg-gradient-to-r from-[#3E2F56] to-[#8A6FB3] bg-clip-text text-transparent">
+              Our Team
+            </span>
+          }
+          icon={  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-people-fill" viewBox="0 0 16 16">
+          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+        </svg>
+        }
+          
+        />
+      
+      </div>
+
   </div>
 
   {/* Heading */}
@@ -75,49 +94,44 @@ const TeamMembers = () => {
   </p>
 
   {/* Button */}
-  <Button className="h-[36px] sm:h-[38px] md:h-[41px] rounded-[10px] bg-[linear-gradient(180deg,rgba(65,47,89,1)_0%,rgba(128,89,227,1)_100%)] border-[3px] border-[#ffffff26] hover:bg-[linear-gradient(180deg,rgba(65,47,89,1)_0%,rgba(128,89,227,1)_100%)] mt-4 sm:mt-6">
-    <span className="text-[12px] sm:text-[13px] md:text-[14.4px] font-medium text-white tracking-[-0.45px] leading-[23.4px]">
-      Book an Appointment
-    </span>
-  </Button>
+  <Button   className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
+  border border-[#E8C1C5]/30 shadow-sm shadow-white/20
+  bg-gradient-to-r from-[#E8C1C5] to-[#E8C1C5] 
+  [font-family:'DM_Sans',Helvetica] font-medium text-[#3E2F56] text-base tracking-[-0.50px] leading-[26px] 
+  hover:from-[#d8a8ad] hover:to-[#d8a8ad] 
+  transition-all duration-300 ease-in-out 
+  mt-4 sm:mt-6">
+        Book an Appointment
+      </Button>
 
   {/* Team Members Grid */}
-  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-[1200px] mx-auto mt-[40px] sm:mt-[60px] md:mt-[80px]">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto mt-[40px] sm:mt-[60px] md:mt-[80px]">
   {teamMembers.map((member, index) => (
-    <Card
+    <div
       key={index}
-      className="bg-[#080808] border border-[#ffffff12] rounded-[20px] sm:rounded-[25px] md:rounded-[30px] p-4 sm:p-5 md:p-6 w-full max-w-full mx-auto flex"
+      className="relative aspect-square rounded-[12px] overflow-hidden group"
     >
-      {/* Avatar */}
-      <Avatar className="w-20 sm:w-24 md:w-[120px] h-20 sm:h-24 md:h-[120px] rounded-[16px] sm:rounded-[20px] md:rounded-[22px] border border-[#ffffff14] flex-shrink-0 relative">
-        <AvatarImage
-          src={member.image}
-          alt={member.name}
-          className="w-full h-full object-cover rounded-[inherit]"
-        />
-        <div className="absolute inset-0 rounded-[inherit] bg-[linear-gradient(180deg,rgba(0,0,0,0)_91%,rgba(0,0,0,0.3)_100%)]" />
-      </Avatar>
+      {/* Image */}
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-full object-cover"
+      />
 
-      {/* Info */}
-      <div className="flex-1 ml-4 sm:ml-6 md:ml-8 bg-[#080808] rounded-[16px] sm:rounded-[20px] md:rounded-[22px] border border-[#4f1ad626] h-[100px] sm:h-[110px] md:h-[120px] p-4 sm:p-5 md:p-5 shadow-[inset_0px_10px_10px_-1px_#4f1ad626] relative flex items-center justify-between">
-        <div>
-          <h3 className="font-semibold text-white text-sm sm:text-base md:text-lg tracking-[-0.5px] leading-[22px] sm:leading-[24px] md:leading-[26px] mb-1">
-            {member.name}
-          </h3>
-          <p className="font-normal text-[#ffffff99] text-xs sm:text-sm md:text-base tracking-[-0.2px] leading-[20px] sm:leading-[22px] md:leading-[26px]">
-            {member.role}
-          </p>
-        </div>
-
-        <img
-          className="w-8 h-8 sm:w-9 sm:h-9 md:w-[42px] md:h-[42px]"
-          alt="Social icon"
-          src="/social-icon---icon.svg"
-        />
+      {/* Overlay for text */}
+      <div className="absolute bottom-0 right-0 p-4  w-full text-right">
+        <h3 className="text-white font-semibold text-lg">
+          {member.name}
+        </h3>
+        <p className="text-white/80 text-sm">
+          {member.role}
+        </p>
       </div>
-    </Card>
+    </div>
   ))}
 </div>
+
+
 
 </div>
   )

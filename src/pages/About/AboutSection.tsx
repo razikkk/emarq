@@ -43,18 +43,24 @@ const AboutSection = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div className="space-y-8">
           <div className="space-y-[71px]">
-            <div className="flex justify-center pt-[80px]">
-              <HighlightTag
-                variant="dotted"
-                className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-                title={
-                  <span className="bg-gradient-to-r from-white to-white/10 bg-clip-text text-transparent">
-                    About Emarq
-                  </span>
-                }
-                icon="https://api.builder.io/api/v1/image/assets/TEMP/ee60d881afc242b9a3b0e92d5f8322a3f74c021e?placeholderIfAbsent=true"
-              />
-            </div>
+          <div className="flex justify-center">
+        <HighlightTag
+          variant="dotted"
+          className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+          title={
+            <span className="bg-gradient-to-r from-[#3E2F56] to-[#8A6FB3] bg-clip-text text-transparent">
+              About Emarq
+            </span>
+          }
+          icon={  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-buildings" viewBox="0 0 16 16">
+          <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022M6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z"/>
+          <path d="M2 11h1v1H2zm2 0h1v1H4zm-2 2h1v1H2zm2 0h1v1H4zm4-4h1v1H8zm2 0h1v1h-1zm-2 2h1v1H8zm2 0h1v1h-1zm2-2h1v1h-1zm0 2h1v1h-1zM8 7h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zM8 5h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zm0-2h1v1h-1z"/>
+        </svg>
+        }
+          
+        />
+      
+      </div>
   
             <div className="space-y-[31px]">
               <div className="space-y-[10px]">
@@ -133,14 +139,16 @@ const AboutSection = () => {
                             </span>
                           </Badge>
                         ))}
-                        {card.hasButton && (
+                        {/* {card.hasButton && (
                           <Button className="h-[41px] rounded-[10px] bg-gradient-to-b from-[#412F59] to-[#8059E3] border-[3px] border-[#ffffff26]">
                             <span className="text-[12px] sm:text-[13px] md:text-[14px] font-medium text-white">
                               Book an Appointment
                             </span>
                           </Button>
-                        )}
+                        )} */}
+                        
                       </div>
+                      
                     </div>
                   </div>
                 </CardContent>

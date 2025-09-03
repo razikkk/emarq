@@ -1,26 +1,47 @@
 import React from 'react'
 import { PortfolioCard } from '@/components/PortfolioCard';
 import { Button } from '@/components/ui/button';
+import { HighlightTag } from '@/components/HighlightTag';
 
 const Portfolio = () => {
   return (
     <div>
+            <hr className="border-0 h-px bg-[#E8C1C5]/30" />
+
     <div className="flex flex-col relative w-full overflow-hidden items-center pt-[100px] min-h-screen max-md:max-w-full">
       {/* Background */}
-      <img
+      {/* <img
         src="https://api.builder.io/api/v1/image/assets/TEMP/b8eac3d4b26ed07f548eca35005a6b1d81426adf?placeholderIfAbsent=true"
         className="absolute h-full w-full object-cover inset-0"
         alt=""
-      />
+      /> */}
   
       {/* Icon */}
-      <div className="flex flex-col relative aspect-[2.878] w-[118px] max-w-full overflow-hidden rounded-[40px]">
+      {/* <div className="flex flex-col relative aspect-[2.878] w-[118px] max-w-full overflow-hidden rounded-[40px]">
         <img
           src="https://api.builder.io/api/v1/image/assets/TEMP/7c068ef605e6e75aa37b6779a4f150fd0f95ce9b?placeholderIfAbsent=true"
           className="absolute h-full w-full object-cover inset-0"
           alt=""
         />
         <div className="relative border flex shrink-0 h-[41px] rounded-[40px] border-[rgba(255,255,255,0.05)] border-solid" />
+      </div> */}
+
+<div className="flex justify-center">
+        <HighlightTag
+          variant="dotted"
+          className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+          title={
+            <span className="bg-gradient-to-r from-[#3E2F56] to-[#8A6FB3] bg-clip-text text-transparent">
+              Portfolio
+            </span>
+          }
+          icon={ <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-tools" viewBox="0 0 16 16">
+          <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
+        </svg>
+          }
+          
+        />
+      
       </div>
   
       {/* Headline Row 1 */}
@@ -47,10 +68,13 @@ const Portfolio = () => {
       </p>
   
       {/* Button */}
-      <Button className="hidden md:block w-[185px] h-[45px] rounded-[10px] border border-purple-400/30 
-        bg-gradient-to-r from-[#412F59] to-[#8059E3] 
-        [font-family:'DM_Sans',Helvetica] font-medium text-white text-base tracking-[-0.50px] leading-[26px] 
-        hover:from-[#3a244f] hover:to-[#724dd8] transition-all mt-[40px]">
+      <Button   className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
+  border border-[#E8C1C5]/30 shadow-sm shadow-white/20
+  bg-gradient-to-r from-[#E8C1C5] to-[#E8C1C5] 
+  [font-family:'DM_Sans',Helvetica] font-medium text-[#3E2F56] text-base tracking-[-0.50px] leading-[26px] 
+  hover:from-[#d8a8ad] hover:to-[#d8a8ad] 
+  transition-all duration-300 ease-in-out 
+  mt-4 sm:mt-6">
         View More Works
       </Button>
 

@@ -18,6 +18,7 @@ import AnimatedLogo from "@/components/AnimatedLogo";
 import { useEffect, useState } from "react";
 import {motion} from 'framer-motion'
 import SmoothScroll from "@/components/ui/SmoothScroll";
+import { BackgroundGradientAnimation } from "@/components/ui/shadcn-io/background-gradient-animation";
 
 
 
@@ -38,7 +39,8 @@ const Index = () => {
 
   return (
    
-    <div className="bg-black min-h-screen text-white overflow-x-hidden ">
+    <div className=" min-h-screen text-white overflow-x-hidden ">
+      <BackgroundGradientAnimation/>
       <motion.div
       className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999]"
       animate={{
@@ -83,18 +85,18 @@ const Index = () => {
     </section>
 
     {/* Services Section */}
-    <section className="bg-[rgba(8,8,8,1)] w-full max-w-[1400px] mx-auto overflow-hidden mt-[123px] rounded-[20px] px-5 max-md:mt-10">
+    <section className=" w-full max-w-[1400px] mx-auto overflow-hidden mt-[123px] rounded-[20px] px-5 max-md:mt-10">
       <Services />
     </section>
 
     {/* Portfolio Section */}
     <section id="portfolio" className="flex w-full max-w-[1300px] mx-auto h-px mt-[120px] max-md:mt-10" />
-    <section className="bg-black w-full px-5">
+    <section className="w-full px-5">
       <Portfolio />
     </section>
 
     {/* Support Section */}
-    <section className="relative w-full bg-black px-5">
+    <section className="relative w-full px-5">
       <Support />
     </section>
 
@@ -114,19 +116,19 @@ const Index = () => {
     </section>
 
     {/* Testimonials Section */}
-    <section className="bg-[rgba(8,8,8,1)] w-full max-w-[1400px] mx-auto overflow-hidden mt-[437px] rounded-[20px] px-5 max-md:mt-10">
+    <section className="w-full max-w-[1400px] mx-auto overflow-hidden mt-[437px] rounded-[20px] px-5 max-md:mt-10">
       <Testimonial />
     </section>
 
     {/* FAQ Section */}
-    <section id="faq" className="bg-black overflow-hidden w-full px-5">
+    <section id="faq" className="overflow-hidden w-full px-5">
       <Faq />
     </section>
 
     {/* CTA Section */}
     <section
       id="contact"
-      className="bg-black w-full max-w-[1400px] mx-auto overflow-hidden text-base font-normal tracking-[-0.5px] leading-loose mt-[110px] rounded-[20px] px-5 max-md:mt-10"
+      className="w-full max-w-[1400px] mx-auto overflow-hidden text-base font-normal tracking-[-0.5px] leading-loose mt-[110px] rounded-[20px] px-5 max-md:mt-10"
     >
       <Contact />
     </section>

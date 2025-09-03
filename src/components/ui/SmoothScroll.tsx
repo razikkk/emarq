@@ -21,7 +21,7 @@ const SmoothScroll = ({ children }) => {
     window.addEventListener('scroll', onScroll);
 
     gsap.ticker.add(() => {
-      scrollY.current += (targetY.current - scrollY.current) * 0.03; // smooth factor
+      scrollY.current += (targetY.current - scrollY.current) * 0.02; // smooth factor
       gsap.set(containerRef.current, { y: -scrollY.current });
     });
 

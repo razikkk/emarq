@@ -19,7 +19,7 @@ html, body {
 }
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 100%; 
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -103,6 +103,13 @@ html, body {
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+  .theme {
+    --animate-first: moveVertical 30s ease infinite;
+    --animate-second: moveInCircle 20s reverse infinite;
+    --animate-third: moveInCircle 40s linear infinite;
+    --animate-fourth: moveHorizontal 40s ease infinite;
+    --animate-fifth: moveInCircle 20s ease infinite;
+  }
 }
 
 @layer base {
@@ -112,5 +119,60 @@ html, body {
 
   body {
     @apply bg-background text-foreground;
+  }
+
+}
+
+/* ---break---
+*/
+
+@theme inline {
+  @keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+    }
+  50% {
+    transform: translateX(50%) translateY(10%);
+    }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+    }
+  }
+  @keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+    }
+  50% {
+    transform: rotate(180deg);
+    }
+  100% {
+    transform: rotate(360deg);
+    }
+  }
+  @keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+    }
+  50% {
+    transform: translateY(50%);
+    }
+  100% {
+    transform: translateY(-50%);
+    }
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  33% {
+    transform: scale(1.1) translate(10px, -10px);
+  }
+  66% {
+    transform: scale(0.9) translate(-10px, 10px);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
   }
 }

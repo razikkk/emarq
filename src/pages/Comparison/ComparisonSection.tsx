@@ -21,16 +21,29 @@ const ComparisonSection = () => {
     
   return (
     <div className="flex flex-col items-center">
+          <hr className="border-0 h-px bg-[#E8C1C5]/30" />
+
     {/* Highlight Tag */}
-    <div className="flex justify-center mb-4 sm:mb-6">
-      <HighlightTag
-        variant="dotted"
-        title="Comparison"
-        icon="https://api.builder.io/api/v1/image/assets/TEMP/1949c8aeb4bf168d13b38c748d7c85050207faf5?placeholderIfAbsent=true"
-      />
-    </div>
+    <div className="flex justify-center">
+        <HighlightTag
+          variant="dotted"
+          className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+          title={
+            <span className="bg-gradient-to-r from-[#3E2F56] to-[#8A6FB3] bg-clip-text text-transparent">
+              Comparison
+            </span>
+          }
+          icon={ <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+          <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+        </svg>
+        }
+          
+        />
+      
+      </div>
   
     {/* Heading */}
+    <div className="mt-8 sm:mt-10 md:mt-12 flex flex-col items-center w-full">
     <div className="mb-4 sm:mb-6 text-center">
       <div className="flex flex-wrap justify-center gap-4 sm:gap-6 font-normal text-white text-[32px] sm:text-[42px] md:text-[54px] tracking-[-1.2px] md:tracking-[-1.9px] leading-[38px] sm:leading-[46px] md:leading-[50px] mb-3 sm:mb-4">
         <span>Emarq</span>
@@ -89,6 +102,7 @@ const ComparisonSection = () => {
           </CardContent>
         </Card>
       </div>
+    </div>
     </div>
   </div>
   )

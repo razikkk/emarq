@@ -60,13 +60,10 @@ const supportFeatures = [
   ];
 const Support = () => {
   return (
-    <div className="relative min-h-[1063px] bg-[url(/light-rays---rays-2.png)] bg-cover bg-center pt-24 sm:pt-28 lg:pt-36">
-    {/* Gradient overlay */}
-    <img
-      src="https://api.builder.io/api/v1/image/assets/TEMP/b8eac3d4b26ed07f548eca35005a6b1d81426adf?placeholderIfAbsent=true"
-      className="absolute h-full w-full object-cover inset-0"
-      alt=""
-    />
+    <div className="relative min-h-[1063px] bg-[url(/light-rays---rays-2.png)] bg-cover bg-center pt-32 sm:pt-36 lg:pt-44">
+                  <hr className="border-0 h-px bg-[#E8C1C5]/30 mb-24" />
+
+    
   
     <div className="relative z-10 max-w-6xl mx-auto px-4 text-center space-y-8">
       {/* Highlight tag */}
@@ -75,11 +72,15 @@ const Support = () => {
           variant="dotted"
           className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
           title={
-            <span className="bg-gradient-to-r from-white to-white/10 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#3E2F56] to-[#8A6FB3] bg-clip-text text-transparent">
               24/7 Support
             </span>
           }
-          icon="https://api.builder.io/api/v1/image/assets/TEMP/ee60d881afc242b9a3b0e92d5f8322a3f74c021e?placeholderIfAbsent=true"
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-headset" viewBox="0 0 16 16">
+  <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
+</svg>
+          }
         />
       </div>
   
@@ -141,7 +142,7 @@ const Support = () => {
   
           {/* Features grid */}
           <div className="relative z-10 pt-[244px]">
-            <div className="w-full h-px bg-gradient-to-r from-white/5 via-white/10 to-white/5 mb-[41px]" />
+            {/* <div className="w-full h-px bg-gradient-to-r from-white/5 via-white/10 to-white/5 mb-[41px]" /> */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {supportFeatures.map((feature, index) => (
                 <Card
@@ -172,7 +173,8 @@ const Support = () => {
     </div>
   
     {/* Bottom divider */}
-    <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-white/5 via-white/10 to-white/5" />
+    {/* <hr className="border-0 h-px bg-[#E8C1C5]/30 mb-24" /> */}
+
   </div>
   )
 }

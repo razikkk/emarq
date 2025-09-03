@@ -2,6 +2,7 @@ import React from 'react'
 import { ServiceCard } from '@/components/ServiceCard';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { HighlightTag } from '@/components/HighlightTag';
 
 const serviceTags = [
   {
@@ -50,22 +51,36 @@ const serviceTags = [
 const Services = () => {
   return (
     <div>
-        <div className="border flex w-full flex-col items-center pb-[58px] rounded-[20px] border-[rgba(255,255,255,0.05)] border-solid max-md:max-w-full">
+            <hr className="border-0 h-px bg-[#E8C1C5]/30" />
+
+        <div className=" flex w-full flex-col items-center pb-[58px] rounded-[20px] max-md:max-w-full">
         <div className="flex flex-col self-stretch relative min-h-[400px] w-full overflow-hidden items-center pt-[100px] pb-[41px] px-20 max-md:max-w-full max-md:px-5">
-  <img
+  {/* <img
     src="https://api.builder.io/api/v1/image/assets/TEMP/0e856ed630aeb9def5b08fb09d885341e3a4cc59?placeholderIfAbsent=true"
     className="absolute h-full w-full object-cover inset-0 max-md:rounded-t-[30px]" // mobile top radius
     alt=""
-  />
+  /> */}
   <div className="relative flex w-[565px] max-w-full flex-col items-center">
-    <div className="flex flex-col relative aspect-[2.927] w-[120px] max-w-full overflow-hidden rounded-[40px]">
-      <img
-        src="https://api.builder.io/api/v1/image/assets/TEMP/e327f49ba216204499c5efe3d04c10214dea5325?placeholderIfAbsent=true"
-        className="absolute h-full w-full object-cover inset-0"
-        alt=""
-      />
-      <div className="relative border flex shrink-0 h-[41px] rounded-[40px] border-[rgba(255,255,255,0.05)] border-solid" />
-    </div>
+   
+    <div className="flex justify-center">
+        <HighlightTag
+          variant="dotted"
+          className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+          title={
+            <span className="bg-gradient-to-r from-[#3E2F56] to-[#8A6FB3] bg-clip-text text-transparent">
+              Services
+            </span>
+          }
+          icon={  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-gear" viewBox="0 0 16 16">
+          <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+          <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+        </svg>
+        }
+          
+        />
+      
+      </div>
+     
 
     {/* Heading */}
     <div className="flex flex-col items-center text-center mt-[35px]">
@@ -85,10 +100,13 @@ const Services = () => {
     </p>
   </div>
 </div>
-            <Button className="hidden md:block w-[185px] h-[45px] rounded-[10px] border border-purple-400/30 
-  bg-gradient-to-r from-[#412F59] to-[#8059E3] 
-  [font-family:'DM_Sans',Helvetica] font-medium text-white text-base tracking-[-0.50px] leading-[26px] 
-  hover:from-[#3a244f] hover:to-[#724dd8] transition-all">
+            <Button  className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
+  border border-[#E8C1C5]/30 shadow-sm shadow-white/20
+  bg-gradient-to-r from-[#E8C1C5] to-[#E8C1C5] 
+  [font-family:'DM_Sans',Helvetica] font-medium text-[#3E2F56] text-base tracking-[-0.50px] leading-[26px] 
+  hover:from-[#d8a8ad] hover:to-[#d8a8ad] 
+  transition-all duration-300 ease-in-out 
+  mt-4 sm:mt-6">
   Book a 15min call
 </Button>
 
