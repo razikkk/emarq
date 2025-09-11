@@ -162,17 +162,258 @@ html, body {
   }
 }
 
-/* @keyframes blob {
-  0% {
-    transform: scale(1) translate(0, 0);
+
+/* ---------- Marquee (you already had something similar) ---------- */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  background: transparent;
+  padding: 30px 0; /* adjust vertical spacing */
+}
+
+.marquee {
+  display: inline-block;
+  animation: marquee 18s linear infinite;
+  font-size: 120px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.06);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* duplicate content is repeated: keep the sequence twice to loop smoothly */
+.marquee span { padding-right: 4rem; }
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ---------- Stacked slide styles ---------- */
+.service-stack-container {
+  position: relative;
+  width: 100%;
+  /* height is controlled by JS timeline (pin end). We'll set a min height */
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Each slide is absolutely stacked and centered */
+.service-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* avoid interactions while animating */
+}
+
+/* image box initial look */
+.service-slide img {
+  width: 50vw; /* initial size */
+  max-width: 900px;
+  height: auto;
+  object-fit: cover;
+  transform-origin: center center;
+  border-radius: 50px; /* user requested 50px radius */
+  will-change: transform, opacity, border-radius;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+}
+
+/* caption that will appear once image grows full screen */
+.service-caption {
+  position: absolute;
+  top: 6%;
+  left: 6%;
+  transform: translateY(-10px);
+  color: white;
+  opacity: 0;
+  max-width: 46%;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* caption typography */
+.service-caption h2 {
+  font-size: clamp(20px, 3.8vw, 46px);
+  line-height: 1.02;
+  margin: 0 0 .6rem 0;
+  font-weight: 700;
+}
+.service-caption p {
+  margin: 0;
+  font-size: clamp(14px, 1.7vw, 18px);
+  opacity: 0.85;
+}
+
+/* ensure mobile sizes look good */
+@media (max-width: 768px) {
+  .marquee { font-size: 44px; }
+  .service-caption { left: 5%; top: 5%; max-width: 90%; }
+  .service-slide img { width: 80vw; border-radius: 28px; }
+}
+
+
+/* services */
+
+.card-image img{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  transform: scale(2);
+
+}
+
+.card-marquee h1{
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: -0.1rem;
+  line-height: 1.25;
+}
+
+.card-description p{
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+
+.cards section{
+  position: relative;
+  width: 100vh;
+}
+
+.cards{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 25svh;
+}
+
+.card-marquee{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+
+.marquee{
+  display: flex;
+}
+
+.marquee h1{
+  white-space: nowrap;
+  font-size: 10vw;
+  font-weight: 600;
+  margin-right: 30px;
+}
+
+.card{
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  padding: 1.5em;
+}
+
+.card-wrapper{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.card-image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 150px;
+  overflow: hidden;
+}
+
+.card-content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1;
+}
+
+.card-content .card-title{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card-content .card-description{
+  text-align: center;
+  width: 40%;
+  margin-bottom: 3em;
+  position: relative;
+  transform: translateX(40px);
+  opacity: 0;
+}
+
+.card:nth-child(2){
+  margin-top: 50vh;
+}
+
+.char{
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.char span{
+  transform: translateX(100%);
+  display: inline-block;
+  will-change: transform;
+}
+
+@media(max-width: 900px){
+  h1{
+    font-size: 2rem;
+    letter-spacing: 0;
   }
-  33% {
-    transform: scale(1.1) translate(10px, -10px);
+  .card-content .card-description{
+    width: 90%;
   }
-  66% {
-    transform: scale(0.9) translate(-10px, 10px);
-  }
-  100% {
-    transform: scale(1) translate(0, 0);
-  }
-} */
+}
+
+.image-trail {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.portfolio-card {
+  position: absolute;
+  inset: 0;
+  transform-origin: center top; /* helps with scaling animation */
+}
+
+
+.cards {
+  position: relative;
+  height: 100vh; /* enough space for pinning */
+}
+
+.custom-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}

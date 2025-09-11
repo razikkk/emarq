@@ -1,32 +1,169 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { PortfolioCard } from '@/components/PortfolioCard';
 import { Button } from '@/components/ui/button';
 import { HighlightTag } from '@/components/HighlightTag';
+import ImageTrail from '@/components/animations/ImageTrail';
+import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import ScrollStack, { ScrollStackItem } from '@/components/animations/ScrollStack';
+import { useScroll } from 'framer-motion';
+import useStackedCards from '@/components/ui/UseStackedHook';
+import { motion, Variants } from "framer-motion";
+
+const highlightVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeInOut" }, // use string easing to avoid TS errors
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15, // delay between words
+    },
+  },
+};
+
+const wordVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+};
+
+
+const paragraphVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: "easeOut" as const } 
+  },
+};
 const Portfolio = () => {
+  const [hoveredWord, setHoveredWord] = useState<string | null>(null);
+  const containerRef = useRef(null)
+  const wordsRow1 = ['Showcasing', 'Your', 'Best'];
+  const wordsRow2 = ['Work', 'with', 'Pure', 'Precision.'];
+  const images = [
+   
+      'https://picsum.photos/id/287/300/300',
+      'https://picsum.photos/id/1001/300/300',
+   
+    
+      'https://picsum.photos/id/1025/300/300',
+      'https://picsum.photos/id/1026/300/300',
+    
+   
+      'https://picsum.photos/id/1027/300/300',
+      'https://picsum.photos/id/1028/300/300',
+  
+ 
+      'https://picsum.photos/id/1029/300/300',
+      'https://picsum.photos/id/1030/300/300',
+   
+ 
+      'https://picsum.photos/id/1031/300/300',
+      'https://picsum.photos/id/1032/300/300',
+  
+   
+      'https://picsum.photos/id/1033/300/300',
+      'https://picsum.photos/id/1034/300/300',
+    
+   
+      'https://picsum.photos/id/1035/300/300',
+      'https://picsum.photos/id/1036/300/300',
+    ]
+    
+    useEffect(() => {
+      if (!containerRef.current) return;
+    
+      let currentImageIndex = 0;
+    
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!hoveredWord || !containerRef.current) return;
+    
+        const container = containerRef.current as HTMLDivElement;
+        const rect = container.getBoundingClientRect();
+    
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+    
+        createTrail(x, y);
+      };
+    
+      const createTrail = (x: number, y: number) => {
+        if (!containerRef.current) return;
+    
+        const img = document.createElement("img");
+        img.src = images[currentImageIndex];
+        img.className = "image-trail";
+        containerRef.current.appendChild(img);
+    
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+    
+        const imgSize = 100;
+    
+        gsap.set(img, {
+          x: x - imgSize / 2,
+          y: y - imgSize / 2,
+          scale: 0,
+          rotation: gsap.utils.random(-20, 20),
+          opacity: 0,
+        });
+    
+        // Animate scale + opacity
+        gsap.to(img, {
+          scale: 1,
+          opacity: 1,
+          duration: 0.2,
+          ease: "power2.out",
+        });
+    
+        // Smooth follow animation for the trail
+        gsap.to(img, {
+          x: x - imgSize / 2,
+          y: y - imgSize / 2,
+          duration: 0.1, // adjust for speed
+          ease: "power2.out",
+        });
+    
+        // Fade out
+        gsap.to(img, {
+          scale: 0.3,
+          opacity: 0,
+          duration: 0.8,
+          delay: 0.3,
+          ease: "power2.in",
+          onComplete: () => img.remove(),
+        });
+      };
+    
+      const container = containerRef.current;
+      container.addEventListener("mousemove", handleMouseMove);
+    
+      return () => container.removeEventListener("mousemove", handleMouseMove);
+    }, [hoveredWord]);
+   
+useStackedCards()
+
+    
   return (
-    <div>
+    <div >
             <hr className="border-0 h-px bg-[#E8C1C5]/30" />
 
-    <div className="flex flex-col relative w-full overflow-hidden items-center pt-[100px] min-h-screen max-md:max-w-full">
-      {/* Background */}
-      {/* <img
-        src="https://api.builder.io/api/v1/image/assets/TEMP/b8eac3d4b26ed07f548eca35005a6b1d81426adf?placeholderIfAbsent=true"
-        className="absolute h-full w-full object-cover inset-0"
-        alt=""
-      /> */}
-  
-      {/* Icon */}
-      {/* <div className="flex flex-col relative aspect-[2.878] w-[118px] max-w-full overflow-hidden rounded-[40px]">
-        <img
-          src="https://api.builder.io/api/v1/image/assets/TEMP/7c068ef605e6e75aa37b6779a4f150fd0f95ce9b?placeholderIfAbsent=true"
-          className="absolute h-full w-full object-cover inset-0"
-          alt=""
-        />
-        <div className="relative border flex shrink-0 h-[41px] rounded-[40px] border-[rgba(255,255,255,0.05)] border-solid" />
-      </div> */}
-
-<div className="flex justify-center">
+    <div className="flex flex-col relative w-full overflow-hidden items-center pt-[100px] min-h-screen max-md:max-w-full"
+   >
+<motion.div
+      className="flex justify-center"
+      variants={highlightVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
         <HighlightTag
           variant="dotted"
           className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
@@ -42,32 +179,57 @@ const Portfolio = () => {
           
         />
       
-      </div>
+      </motion.div>
   
       {/* Headline Row 1 */}
-      <div className="relative flex flex-wrap justify-center w-full gap-4 text-white font-normal text-center tracking-[-1.9px] leading-none mt-[35px] text-4xl md:text-[54px]">
-        <div>Showcasing</div>
-        <div>Your</div>
-        <div>Best</div>
-      </div>
-  
-      {/* Headline Row 2 */}
-      <div className="relative flex flex-wrap justify-center w-full gap-4 text-gray-500 font-normal text-center tracking-[-1.9px] leading-none mt-[11px] text-4xl md:text-[54px]">
-        <div>Work</div>
-        <div>with</div>
-        <div>Pure</div>
-        <div>Precision.</div>
-      </div>
-  
+      <motion.div
+     
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="w-full"
+    >
+      {/* Row 1 */}
+      <motion.div className="relative flex flex-wrap justify-center w-full gap-4 text-white font-normal text-center tracking-[-1.9px] leading-none mt-[35px] text-4xl md:text-[54px] z-10">
+        {wordsRow1.map((word) => (
+          <motion.div key={word} variants={wordVariants} className="relative">
+            {word}
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Row 2 */}
+      <motion.div className="relative flex flex-wrap justify-center w-full gap-4 text-gray-500 font-normal text-center tracking-[-1.9px] leading-none mt-[11px] text-4xl md:text-[54px] z-10">
+        {wordsRow2.map((word) => (
+          <motion.div key={word} variants={wordVariants} className="relative">
+            {word}
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.div>
       {/* Description */}
-      <p className="relative text-gray-500 text-sm sm:text-base font-normal leading-relaxed tracking-[-0.2px] text-center mt-[43px] max-md:max-w-full">
+      <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="max-w-2xl mx-auto"
+    >
+      <motion.p variants={paragraphVariants} className="relative text-gray-500 text-sm sm:text-base font-normal leading-relaxed tracking-[-0.2px] text-center mt-[43px] max-md:max-w-full">
         A portfolio is more than just projects—it's your story, vision, and
-      </p>
-      <p className="relative text-gray-500 text-sm sm:text-base font-normal leading-relaxed tracking-[-0.2px] text-center mt-1 max-md:max-w-full">
+      </motion.p>
+      <motion.p variants={paragraphVariants} className="relative text-gray-500 text-sm sm:text-base font-normal leading-relaxed tracking-[-0.2px] text-center mt-1 max-md:max-w-full">
         expertise. Emarq ensures your work stands out with a rank.
-      </p>
+      </motion.p>
+    </motion.div>
   
       {/* Button */}
+      <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.5 }}
+  transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
+>
       <Button   className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
   border border-[#E8C1C5]/30 shadow-sm shadow-white/20
   bg-gradient-to-r from-[#E8C1C5] to-[#E8C1C5] 
@@ -77,9 +239,11 @@ const Portfolio = () => {
   mt-4 sm:mt-6">
         View More Works
       </Button>
+      </motion.div>
 
             {/* Portfolio Cards */}
-            <div className="relative mt-[60px] max-md:mt-10 space-y-8 sm:space-y-10 w-full max-w-6xl">
+        <div className=" cards relative mt-[60px] max-md:mt-10 space-y-8 sm:space-y-10 w-full max-w-6xl">
+              <div className='custom-card card1'>
               <PortfolioCard
                 year="2024"
                 title="Lemonide Tech"
@@ -93,6 +257,8 @@ const Portfolio = () => {
                 image1="https://api.builder.io/api/v1/image/assets/TEMP/f5fe4f840d593b302ad9ce0391640f5bd3d78895?placeholderIfAbsent=true"
                 image2="https://api.builder.io/api/v1/image/assets/TEMP/f4e865051721b7bb561405fa978c50b43fa5e916?placeholderIfAbsent=true"
               />
+             </div>
+             <div className='custom-card card2'>
               <PortfolioCard
                 year="2025"
                 title="Viper Studio"
@@ -106,6 +272,8 @@ const Portfolio = () => {
                 image1="https://api.builder.io/api/v1/image/assets/TEMP/c8bad13c4ea7315a8750fcb379166bec8ae17039?placeholderIfAbsent=true"
                 image2="https://api.builder.io/api/v1/image/assets/TEMP/62ca4baffc71a8c953f56227f1fbffcf171eda70?placeholderIfAbsent=true"
               />
+              </div>
+              <div className='custom-card card3'>             
               <PortfolioCard
                 year="2025"
                 title="Million One"
@@ -119,7 +287,10 @@ const Portfolio = () => {
                 image1="https://api.builder.io/api/v1/image/assets/TEMP/9b9f21a7b7ed3617570f724eded4dcb52d588540?placeholderIfAbsent=true"
                 image2="https://api.builder.io/api/v1/image/assets/TEMP/b7c86a82f0370eab5e2454fccaad49e71d95e2ca?placeholderIfAbsent=true"
               />
-            </div>
+</div>
+            </div> 
+  
+
           </div>
     </div>
   )

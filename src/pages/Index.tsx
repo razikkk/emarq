@@ -43,19 +43,17 @@ const Index = () => {
   return (
    
     
-    <div className="min-h-screen text-white overflow-x-hidden "
+    <div className="bg-[#3E2F56] min-h-screen text-white overflow-x-hidden "
     >
     
-      <BackgroundGradientAnimation/>
-     
-      <motion.div
+      {/* <motion.div
       className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999]"
       animate={{
         x: mousePosition.x - 7, // center the circle
         y: mousePosition.y - 7
       }}
       transition={{type:'spring', stiffness:80, damping:15}}
-      />
+      /> */}
 
       {/* <AnimatedLogo/> */}
       <SmoothScroll>

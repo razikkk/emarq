@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { HighlightTag } from '@/components/HighlightTag';
 
+ 
 
 const supportFeatures = [
     {
@@ -30,34 +31,35 @@ const supportFeatures = [
   
   const chatBubbles = [
     {
-      src: "/primary-7.svg",
-      className: "w-[205px] h-[205px] top-[29px] left-0",
+      src: "https://picsum.photos/id/1031/300/300",
+      className: "w-40 h-40 top-[29px] left-0 rounded-[30px]",
     },
     {
-      src: "/primary.svg",
-      className: "w-52 h-52 top-0 left-[116px]",
+      src: "https://picsum.photos/id/1035/300/300",
+      className: "w-40 h-40 top-[20px] left-[90px] rounded-[30px]",
     },
     {
-      src: "/primary-1.svg",
-      className: "w-[199px] h-[199px] top-4 left-[229px]",
+      src: "https://picsum.photos/id/1033/300/300",
+      className: "w-40 h-40 top-[25px] left-[180px] rounded-[30px]",
     },
     {
-      src: "/primary-2.svg",
-      className: "w-[184px] h-[184px] top-6 left-[345px]",
+      src: "https://picsum.photos/id/1031/300/300",
+      className: "w-40 h-40 top-[30px] left-[270px] rounded-[30px]",
     },
     {
-      src: "/primary-4.svg",
-      className: "w-[202px] h-[202px] top-[15px] left-[435px]",
+      src: "https://picsum.photos/id/1025/300/300",
+      className: "w-40 h-40 top-[20px] left-[360px] rounded-[30px]",
     },
     {
-      src: "/primary-5.svg",
-      className: "w-[205px] h-[205px] top-5 left-[535px]",
+      src: "https://picsum.photos/id/1026/300/300",
+      className: "w-40 h-40 top-[25px] left-[450px] rounded-[30px]",
     },
     {
-      src: "/primary-3.svg",
-      className: "w-[223px] h-[223px] top-3 left-[631px]",
-    },
+      src: "https://picsum.photos/id/1027/300/300",
+      className: "w-40 h-40 top-[22px] left-[540px] rounded-[30px]",
+    }
   ];
+  
 const Support = () => {
   return (
     <div className="relative min-h-[1063px] bg-[url(/light-rays---rays-2.png)] bg-cover bg-center pt-32 sm:pt-36 lg:pt-44">
@@ -102,72 +104,95 @@ const Support = () => {
       </div>
   
       {/* Button */}
-      <Button className="px-6 py-3 rounded-[10px] bg-gradient-to-b from-[#412F59] to-[#8059E3] border-[3px] border-white/15 font-medium text-white text-base tracking-[-0.5px]">
-        Talk to Us
-      </Button>
+      <Button   className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
+  border border-[#E8C1C5]/30 shadow-sm shadow-white/20
+  bg-gradient-to-r from-[#E8C1C5] to-[#E8C1C5] 
+  [font-family:'DM_Sans',Helvetica] font-medium text-[#3E2F56] text-base tracking-[-0.50px] leading-[26px] 
+  hover:from-[#d8a8ad] hover:to-[#d8a8ad] 
+  transition-all duration-300 ease-in-out 
+  mt-4 sm:mt-6">
+         Talk To Us
+        </Button>
   
       {/* Chat bubbles + features */}
       <div className="relative mt-[100px] px-4 sm:px-20">
         <div className="relative w-full max-w-[1280px] mx-auto">
           {/* Chat bubbles */}
-          <div className="absolute w-[854px] h-72 top-[-77px] left-1/2 transform -translate-x-1/2">
-            <div className="relative w-full h-full">
-              <div className="absolute w-[854px] h-[235px] top-[45px] left-0">
-                {chatBubbles.map((bubble, index) => (
-                  <img
-                    key={index}
-                    className={`absolute ${bubble.className}`}
-                    alt="Primary"
-                    src={bubble.src}
-                  />
-                ))}
-              </div>
-  
-              {/* Sample chat labels */}
-              <div className="absolute w-[130px] h-[38px] top-[15px] left-[707px] bg-[#4f1ad6] rounded-[15px] rotate-[14deg]">
-                <div className="absolute w-[111px] h-[21px] top-2 left-2.5 font-medium text-white text-base leading-[26px] whitespace-nowrap">
-                  Problem Solved
-                </div>
-                <div className="absolute w-2.5 h-2.5 top-[33px] left-[23px] bg-[#4f1ad6] -rotate-45" />
-              </div>
-  
-              <div className="absolute w-[102px] h-[38px] top-[7px] left-[109px] bg-[#0080ff] rounded-[15px] rotate-[-8deg]">
-                <div className="absolute w-[83px] h-[21px] top-2 left-2.5 font-medium text-white text-base leading-[26px] whitespace-nowrap">
-                  Hey, It's me!
-                </div>
-                <div className="absolute w-2.5 h-2.5 top-[33px] left-[23px] bg-[#0080ff] -rotate-45" />
-              </div>
-            </div>
-          </div>
+          <div className="relative mt-[140px] px-4 sm:px-20">
+  <div className="relative w-full max-w-[1280px] mx-auto">
+    {/* Chat bubbles in a slight arc */}
+    <div className="flex justify-center relative" 
+    style={{transform: 'translateX(40px)'}}>
+      {chatBubbles.map((bubble, index) => {
+        // Slight downward arc: parabola
+        const curve = Math.pow(index - chatBubbles.length / 2, 2) * 4; 
+        return (
+          <img
+            key={index}
+            src={bubble.src}
+            alt={`Bubble ${index}`}
+            className="w-32 h-32 object-cover rounded-[25px] -ml-8 first:ml-0 border-4 border-gray-400" // bold gray border
+            style={{
+              top: `${curve + 50}px`, // small downward arc
+              position: 'relative',
+              zIndex: chatBubbles.length - index, // ensure proper overlap
+            }}
+          />
+        );
+      })}
+    </div>
+
+    {/* Chat Labels */}
+    <div className="absolute w-[130px] h-[38px] top-[15px] left-[707px] bg-[#4f1ad6] rounded-[15px] rotate-[14deg]">
+      <div className="absolute w-[111px] h-[21px] top-2 left-2.5 font-medium text-white text-base leading-[26px] whitespace-nowrap">
+        Problem Solved
+      </div>
+      <div className="absolute w-2.5 h-2.5 top-[33px] left-[23px] bg-[#4f1ad6] -rotate-45" />
+    </div>
+
+    <div className="absolute w-[102px] h-[38px] top-[7px] left-[109px] bg-[#0080ff] rounded-[15px] rotate-[-8deg]">
+      <div className="absolute w-[83px] h-[21px] top-2 left-2.5 font-medium text-white text-base leading-[26px] whitespace-nowrap">
+        Hey, It's me!
+      </div>
+      <div className="absolute w-2.5 h-2.5 top-[33px] left-[23px] bg-[#0080ff] -rotate-45" />
+    </div>
+  </div>
+</div>
+
+
+
   
           {/* Features grid */}
           <div className="relative z-10 pt-[244px]">
-            {/* <div className="w-full h-px bg-gradient-to-r from-white/5 via-white/10 to-white/5 mb-[41px]" /> */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {supportFeatures.map((feature, index) => (
-                <Card
-                  key={index}
-                  className="bg-[#080808] border border-white/10 rounded-xl relative overflow-hidden flex flex-col h-auto sm:h-[200px] text-left"
-                >
-                  <div
-                    className="absolute inset-0 bg-cover opacity-10"
-                    style={{ backgroundImage: `url(${feature.backgroundImage})` }}
-                  />
-                  <CardContent className="relative z-10 p-6 flex flex-col items-start gap-4">
-                    <img className="w-10 h-10" alt="Icon" src={feature.icon} />
-                    <div>
-                      <h3 className="font-medium text-white text-lg mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-white/50 text-sm sm:text-base">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    {supportFeatures.map((feature, index) => (
+      <Card
+        key={index}
+        className="backdrop-blur-md border border-white/10 rounded-xl relative overflow-hidden flex flex-col h-auto sm:h-[200px] text-left bg-white/5"
+      >
+        {/* Background image with overlay blur */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20 blur-sm"
+          style={{ backgroundImage: `url(${feature.backgroundImage})` }}
+        />
+
+        <CardContent className="relative z-10 p-6 flex flex-col items-start gap-4">
+          <img className="w-10 h-10" alt="Icon" src={feature.icon} />
+
+          <div>
+            <h3 className="font-semibold text-[#E8C1C5] text-lg mb-2">
+              {feature.title}
+            </h3>
+            <p className="text-[#E8C1C5]/70 text-sm sm:text-base leading-relaxed">
+              {feature.description}
+            </p>
           </div>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+</div>
+
         </div>
       </div>
     </div>

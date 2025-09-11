@@ -4,39 +4,29 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { HighlightTag } from '@/components/HighlightTag';
+import ChromaGrid from '@/components/animations/ChromaGrid';
 
-const teamMembers = [
-    {
-      name: "Sinan",
-      role: "Co-Founder, CEO",
-      image: "/logo.jpg",
-    },
-    {
-      name: "Lena Williams",
-      role: "Co-Founder, CTO",
-      image: "/logo.jpg",
-    },
-    {
-      name: "Maya Johnson",
-      role: "Senior Developer",
-      image: "/image---woman-2.png",
-    },
-    {
-      name: "Zara Patel",
-      role: "Chief Operations Officer",
-      image: "/image---woman-3.png",
-    },
-    {
-      name: "Emma Davis",
-      role: "Chief Product Officer",
-      image: "/image---woman-4.png",
-    },
-    {
-      name: "Chloe Anderson",
-      role: "Senior Product Designer",
-      image: "/image---woman-5.png",
-    },
-  ];
+const items = [
+  {
+    image: "https://i.pravatar.cc/300?img=1",
+    title: "Mohammed Sinan",
+    subtitle: "Frontend Developer",
+    handle: "@sarahjohnson",
+    borderColor: "#3B82F6",
+    gradient: "linear-gradient(145deg, #3B82F6, #000)",
+    url: "https://github.com/sarahjohnson"
+  },
+  {
+    image: "https://i.pravatar.cc/300?img=2",
+    title: "Zubair",
+    subtitle: "Backend Engineer",
+    handle: "@mikechen",
+    borderColor: "#10B981",
+    gradient: "linear-gradient(180deg, #10B981, #000)",
+    url: "https://linkedin.com/in/mikechen"
+  }
+];
+
 const TeamMembers = () => {
   return (
     <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8">
@@ -105,21 +95,21 @@ const TeamMembers = () => {
       </Button>
 
   {/* Team Members Grid */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto mt-[40px] sm:mt-[60px] md:mt-[80px]">
+  {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto mt-[40px] sm:mt-[60px] md:mt-[80px]">
   {teamMembers.map((member, index) => (
     <div
       key={index}
       className="relative aspect-square rounded-[12px] overflow-hidden group"
     >
       {/* Image */}
-      <img
+      {/* <img
         src={member.image}
         alt={member.name}
         className="w-full h-full object-cover"
       />
 
       {/* Overlay for text */}
-      <div className="absolute bottom-0 right-0 p-4  w-full text-right">
+      {/* <div className="absolute bottom-0 right-0 p-4  w-full text-right">
         <h3 className="text-white font-semibold text-lg">
           {member.name}
         </h3>
@@ -127,10 +117,18 @@ const TeamMembers = () => {
           {member.role}
         </p>
       </div>
-    </div>
-  ))}
+    </div> */}
+  {/* ))}  */}
+ {/* </div>  */}
+ <div className='mt-6' style={{ height: '500px', position: 'relative' }}>
+  <ChromaGrid 
+    items={items}
+    radius={300}
+    damping={0.45}
+    fadeOut={0.6}
+    ease="power3.out"
+  />
 </div>
-
 
 
 </div>

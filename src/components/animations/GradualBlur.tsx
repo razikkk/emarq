@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import * as math from 'mathjs';
-
 import './GradualBlur.css';
 
 const DEFAULT_CONFIG = {
@@ -10,8 +9,8 @@ const DEFAULT_CONFIG = {
   divCount: 5,
   exponential: false,
   zIndex: 1000,
-  animated: false,
-  duration: '0.3s',
+  animated: false, // false | true | 'scroll'
+  duration: '0.6s',
   easing: 'ease-out',
   opacity: 1,
   curve: 'linear',
@@ -47,12 +46,7 @@ const CURVE_FUNCTIONS = {
 
 const mergeConfigs = (...configs) => configs.reduce((acc, c) => ({ ...acc, ...c }), {});
 const getGradientDirection = position =>
-  ({
-    top: 'to top',
-    bottom: 'to bottom',
-    left: 'to left',
-    right: 'to right'
-  })[position] || 'to bottom';
+  ({ top: 'to top', bottom: 'to bottom', left: 'to left', right: 'to right' }[position] || 'to bottom');
 
 const debounce = (fn, wait) => {
   let t;
@@ -87,16 +81,12 @@ const useResponsiveDimension = (responsive, config, key) => {
 
 const useIntersectionObserver = (ref, shouldObserve = false) => {
   const [isVisible, setIsVisible] = useState(!shouldObserve);
-
   useEffect(() => {
     if (!shouldObserve || !ref.current) return;
-
     const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), { threshold: 0.1 });
-
     observer.observe(ref.current);
     return () => observer.disconnect();
   }, [ref, shouldObserve]);
-
   return isVisible;
 };
 
@@ -119,7 +109,6 @@ function GradualBlur(props) {
     const increment = 100 / config.divCount;
     const currentStrength =
       isHovered && config.hoverIntensity ? config.strength * config.hoverIntensity : config.strength;
-
     const curveFunc = CURVE_FUNCTIONS[config.curve] || CURVE_FUNCTIONS.linear;
 
     for (let i = 1; i <= config.divCount; i++) {
@@ -149,20 +138,26 @@ function GradualBlur(props) {
         inset: '0',
         maskImage: `linear-gradient(${direction}, ${gradient})`,
         WebkitMaskImage: `linear-gradient(${direction}, ${gradient})`,
-        backdropFilter: `blur(${blurValue.toFixed(3)}rem)`,
-        WebkitBackdropFilter: `blur(${blurValue.toFixed(3)}rem)`,
+        backdropFilter:
+          config.animated === 'scroll'
+            ? isVisible
+              ? `blur(${blurValue.toFixed(3)}rem)`
+              : `blur(${(blurValue + 1).toFixed(3)}rem)`
+            : `blur(${blurValue.toFixed(3)}rem)`,
+        WebkitBackdropFilter:
+          config.animated === 'scroll'
+            ? isVisible
+              ? `blur(${blurValue.toFixed(3)}rem)`
+              : `blur(${(blurValue + 1).toFixed(3)}rem)`
+            : `blur(${blurValue.toFixed(3)}rem)`,
         opacity: config.opacity,
-        transition:
-          config.animated && config.animated !== 'scroll'
-            ? `backdrop-filter ${config.duration} ${config.easing}`
-            : undefined
+        transition: `backdrop-filter ${config.duration} ${config.easing}, opacity ${config.duration} ${config.easing}`
       };
 
       divs.push(<div key={i} style={divStyle} />);
     }
-
     return divs;
-  }, [config, isHovered]);
+  }, [config, isHovered, isVisible]);
 
   const containerStyle = useMemo(() => {
     const isVertical = ['top', 'bottom'].includes(config.position);
@@ -213,14 +208,7 @@ function GradualBlur(props) {
       onMouseEnter={hoverIntensity ? () => setIsHovered(true) : undefined}
       onMouseLeave={hoverIntensity ? () => setIsHovered(false) : undefined}
     >
-      <div
-        className="gradual-blur-inner"
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '100%'
-        }}
-      >
+      <div className="gradual-blur-inner" style={{ position: 'relative', width: '100%', height: '100%' }}>
         {blurDivs}
       </div>
     </div>
@@ -235,20 +223,15 @@ export default GradualBlurMemo;
 
 const injectStyles = () => {
   if (typeof document === 'undefined') return;
-
   const styleId = 'gradual-blur-styles';
   if (document.getElementById(styleId)) return;
-
   const styleElement = document.createElement('style');
   styleElement.id = styleId;
   styleElement.textContent = `
-  .gradual-blur { pointer-events: none; transition: opacity 0.3s ease-out; }
-  .gradual-blur-parent { overflow: hidden; }
-  .gradual-blur-inner { pointer-events: none; }`;
-
+    .gradual-blur { pointer-events: none; transition: opacity 0.3s ease-out; }
+    .gradual-blur-parent { overflow: hidden; }
+    .gradual-blur-inner { pointer-events: none; }
+  `;
   document.head.appendChild(styleElement);
 };
-
-if (typeof document !== 'undefined') {
-  injectStyles();
-}
+if (typeof document !== 'undefined') injectStyles();
