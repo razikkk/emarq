@@ -9,6 +9,7 @@ import { motion, Variants } from "framer-motion";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { InteractiveHoverButton } from '@/components/animations/magicui/interactive-hover-button';
 
 
 
@@ -110,6 +111,53 @@ const cardsData = [
       "Create memorable brand identities and logos that stand out visually.",
     color: "bg-[#3E2F56]",
   },
+  {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-camera" viewBox="0 0 16 16">
+      <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z"/>
+      <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+    </svg>
+    ),
+    text: "Commercial Photography",
+    description:
+      "Capture stunning visuals for products, portraits, and events that leave a lasting impression and elevate your brand.",
+    color: "bg-[#3E2F56]",
+  },
+  {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-camera-video" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/>
+</svg>
+    ),
+    text: "High-Quality Videography",
+    description:
+      "Produce cinematic, high-quality videos that tell compelling stories and showcase your brand with impact.",
+    color: "bg-[#3E2F56]",
+  },
+  {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-laptop" viewBox="0 0 16 16">
+      <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5"/>
+    </svg>
+    ),
+    text: "Post Production",
+    description:
+      "Transform raw footage into polished, professional content with expert editing, color grading, and visual enhancements.",
+    color: "bg-[#3E2F56]",
+  },
+  {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-geo-alt" viewBox="0 0 16 16">
+      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+    </svg>
+    ),
+    text: "Studio & On-Location Shoots",
+    description:
+      "Deliver professional photography and videography sessions, whether in a controlled studio or on location, tailored to your creative vision.",
+    color: "bg-[#3E2F56]",
+  },
+  
 ];
 
 
@@ -250,15 +298,8 @@ const Services = () => {
   viewport={{ once: true, amount: 0.5 }}
   transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
 >
-  <Button   className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
-  border border-[#E8C1C5]/30 shadow-sm shadow-white/20
-  bg-gradient-to-r from-[#E8C1C5] to-[#E8C1C5] 
-  [font-family:'DM_Sans',Helvetica] font-medium text-[#3E2F56] text-base tracking-[-0.50px] leading-[26px] 
-  hover:from-[#d8a8ad] hover:to-[#d8a8ad] 
-  transition-all duration-300 ease-in-out 
-  mt-4 sm:mt-6">
-       See Our Magic
-      </Button>
+<InteractiveHoverButton className='mt-[20px]'>See Our Magic</InteractiveHoverButton>
+
       </motion.div>
 </div>
 

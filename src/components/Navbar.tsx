@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { FiMenu, FiX } from "react-icons/fi";
+import ContactModal from './ui/ContactModal';
 
 export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openModal,setOpenModal] = useState(false)
 
-
+const handleModal = ()=>{
+  setOpenModal(true)
+}
   const navigationItems = [
     { name: "Home", active: true },
     { name: "About", active: false },
@@ -24,11 +28,11 @@ export const Navbar: React.FC = () => {
         backdrop-blur-md bg-white/10 border border-white/20 shadow-lg">
         
         {/* Left Menu */}
-        <nav className="flex items-center gap-6 text-white/90 text-lg"
+        <nav className="flex items-center gap-6 text-white/70 text-lg"
           >
           <span className="cursor-pointer hover:text-white transition">Home</span>
-          <span className="text-white/40">•</span>
-          <span className="cursor-pointer hover:text-white transition">Features</span>
+          <span className="text-white/90">•</span>
+          <span className="cursor-pointer hover:text-white transition">About</span>
         </nav>
 
         {/* Center Logo */}
@@ -37,12 +41,20 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Right Menu */}
-        <nav className="flex items-center gap-6 text-white/90 text-lg">
+        <nav className="flex items-center gap-6 text-white/70 text-lg">
           <span className="cursor-pointer hover:text-white transition">Gallery</span>
-          <span className="text-white/40">•</span>
-          <span className="cursor-pointer hover:text-white transition">Pricing</span>
+          <span className="text-white/90">•</span>
+
+          <span className="cursor-pointer hover:text-white transition" onClick={handleModal}>Contact</span>
+          
         </nav>
-      </div>
+     </div>
+       
+        {/* <ContactModal
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+      
+      /> */}
 
       {/* Mobile Navigation */}
       <div className="absolute flex w-full items-center left-0 -top-6 justify-between px-3 py-3 md:hidden bg-transparent z-50">

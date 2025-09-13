@@ -5,38 +5,110 @@ import {
     AccordionItem,
     AccordionTrigger,
   } from "@/components/ui/accordion"
-
+import {motion, Variants} from 'framer-motion'
   
  
     const faqItems = [
       {
         id: "item-1",
-        question: "What do I need to get started?",
+        question: "What services does your agency offer?",
+        answer: `We provide a full suite of marketing solutions to elevate your brand:
+
+        - Digital Marketing: Strategic campaigns across social media, email, and PPC to boost your online presence.
+        - Video Production: High-quality videos for brand storytelling, advertisements, and social media content.
+        - Website Development: Custom websites designed for optimal user experience and conversion.
+        - SEO: Search engine optimization to improve your website's visibility and ranking.
+        - Logo Design: Unique and memorable logos that reflect your brand identity.
+        - Photography: Professional studio and on-location shoots for products, portraits, and events.`
       },
       {
         id: "item-2",
-        question: "What kind of customization is available?",
+        question: "How long does it take to see results from digital marketing campaigns?",
+        answer: `The timeline varies based on the campaign type and objectives. Generally:
+
+        PPC Advertising: Immediate traffic and results.
+        
+        SEO: 3–6 months to see significant improvements in rankings and organic traffic.
+        
+        Social Media Campaigns: 1–2 months to build engagement and brand awareness.
+        
+        We provide regular reports to track progress and adjust strategies as needed.`
       },
       {
         id: "item-3",
-        question: "How easy is it to edit for beginners?",
+        question: "Do you offer customized packages for small businesses?",
+        answer: `Absolutely! We understand that each business has unique needs and budgets. Our team works closely with you to create tailored packages that align with your goals and resources.`
       },
       {
         id: "item-4",
-        question: "Let me know more about moneyback guarantee?",
+        question: "What sets your agency apart from others in Dubai?",
+        answer: `Our agency stands out due to:
+
+        Comprehensive Services: We offer a one-stop solution for all your marketing needs.
+        
+        Local Expertise: Deep understanding of the Dubai market and consumer behavior.
+        
+        Creative Excellence: A team of skilled professionals committed to delivering high-quality work.
+        
+        Client-Centric Approach: We prioritize your objectives and work collaboratively to achieve them.`
       },
       {
         id: "item-5",
-        question: "Do I need to know how to code?",
+        question: "Can you assist with both studio and on-location shoots?",
+        answer: `Yes, we specialize in both studio and on-location photography and videography. Whether it's a product shoot, corporate event, or personal portrait session, our team ensures professional results that align with your brand's vision.`
       },
       {
         id: "item-6",
-        question: "What will I get after purchasing the template?",
+        question: "How do I get started with your services?",
+        answer: `Getting started is simple:
+
+        - Contact Us: Reach out via our website or call us directly.
+        
+        - Consultation: We'll schedule a meeting to understand your needs and objectives.
+        
+        - Proposal: Receive a customized plan and quote tailored to your requirements.
+        
+        - Execution: Once approved, our team begins working on your project, keeping you informed at every stage.
+        
+        - Let us help you elevate your brand and achieve your marketing goals.`
       },
     ];
 
+    const highlightVariants: Variants = {
+      hidden: { opacity: 0, y: 20 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: "easeInOut" }, // use string easing to avoid TS errors
+      },
+    };
 
 
+
+    const container: Variants = {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.2, // delay between each card
+        },
+      },
+    };
+    
+    const item: Variants = {
+      hidden: { opacity: 0, y: 30 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: "easeOut" },
+      },
+    };
+
+    const words = ["Frequently", "Asked", "Questions"];
+    const paragraph =
+  "Have questions? Our FAQ section has you covered with quick answers to the most common inquiries.";
+
+    const paragraphs = paragraph.split(" ");
 
 
 const Faq = () => {
@@ -64,7 +136,13 @@ alt=""
                         <div className="relative border flex shrink-0 h-[41px] rounded-[40px] border-[rgba(255,255,255,0.05)] border-solid" />
                       </div> */}
 
-    <div className="flex  mt-[60px]">
+<motion.div
+      className="flex mt-[60px]"
+      variants={highlightVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
         <HighlightTag
           variant="dotted"
           className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
@@ -80,50 +158,101 @@ alt=""
           
         />
       
-      </div>
+      </motion.div>
 
       <div className="mb-[30px] mt-[40px]">
-        <h2 className="[font-family:'DM_Sans',Helvetica] font-normal text-white text-[54px] tracking-[-1.90px] leading-[50px] mb-[10px]">
-          Frequently
-        </h2>
-        <div className="flex flex-wrap gap-x-3">
-          <span className="[font-family:'DM_Sans',Helvetica] font-normal text-[#ffffff99] text-[54px] tracking-[-1.90px] leading-[50px]">
-            Asked
-          </span>
-          <span className="[font-family:'DM_Sans',Helvetica] font-normal text-[#ffffff99] text-[54px] tracking-[-1.90px] leading-[50px]">
-            Questions
-          </span>
-        </div>
+      <div className="flex flex-wrap gap-x-3">
+        {words.map((word, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: index * 0.3, // stagger word by word
+              ease: "easeOut",
+            }}
+            className="[font-family:'DM_Sans',Helvetica] font-normal text-[54px] tracking-[-1.90px] leading-[50px]"
+            style={{
+              color: index === 0 ? "#ffffff" : "#ffffff99", // first word white, rest faded
+            }}
+          >
+            {word}
+          </motion.span>
+        ))}
       </div>
+    </div>
 
-      <p className="[font-family:'DM_Sans',Helvetica] font-normal text-[#ffffff99] text-base tracking-[-0.20px] leading-[26px]">
-        Have questions? Our FAQ section has you covered with <br />
-        quick answers to the most common inquiries.
-      </p>
+    <p className="[font-family:'DM_Sans',Helvetica] font-normal text-[#ffffff99] text-base tracking-[-0.20px] leading-[26px]">
+      {paragraphs.map((word, index) => (
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.4,
+            delay: index * 0.05, // stagger each word
+            ease: "easeOut",
+          }}
+          className="inline-block mr-1" // keeps spacing natural
+        >
+          {word}
+        </motion.span>
+      ))}
+    </p>
     </div>
 
     <div className="w-full mt-[60px]">
-      <Accordion type="single" collapsible className="space-y-6">
-        {faqItems.map((item) => (
-          <AccordionItem
-            key={item.id}
-            value={item.id}
-            className="bg-[#080808] rounded-[20px] border border-[#ffffff12] px-[30px] py-0 data-[state=open]:bg-[#080808]"
-          >
-            <AccordionTrigger className="py-[30px] hover:no-underline [&[data-state=open]>svg]:rotate-45">
-              <span className="[font-family:'DM_Sans',Helvetica] font-normal text-white text-lg tracking-[-0.50px] leading-[26px] text-left">
-                {item.question}
-              </span>
-            </AccordionTrigger>
-            <AccordionContent className="pb-[30px] pt-0">
-              <div className="[font-family:'DM_Sans',Helvetica] font-normal text-[#ffffff99] text-base tracking-[-0.20px] leading-[26px]">
-                Answer content would go here for: {item.question}
-              </div>
-            </AccordionContent>
-          </AccordionItem>
+    <Accordion
+        type="single"
+        collapsible
+        className="space-y-6"
+        asChild
+      >
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }} 
+        className="space-y-6"
+      >
+        {faqItems.map((itemData) => (
+          <motion.div key={itemData.id} variants={item}>
+            <AccordionItem
+              value={itemData.id}
+              className="relative backdrop-blur-md bg-white/5 rounded-[20px] border border-white/10 px-[30px] py-0 overflow-hidden"
+            >
+              {/* Gradient line for style */}
+              <div
+                className="absolute top-0 left-1/2 transform -translate-x-1/2 
+                  w-[160px] sm:w-[200px] md:w-[240px] h-px 
+                  bg-gradient-to-r from-[#3E2F56]/0 via-[#E8C1C5] to-[#3E2F56]/0"
+              />
+
+              <AccordionTrigger className="py-[30px] hover:no-underline [&[data-state=open]>svg]:rotate-45">
+                <span className="[font-family:'DM_Sans',Helvetica] font-normal text-[#E8C1C5] text-lg tracking-[-0.50px] leading-[26px] text-left">
+                  {itemData.question}
+                </span>
+              </AccordionTrigger>
+
+              <AccordionContent className="pb-[30px] pt-0">
+                <div className="[font-family:'DM_Sans',Helvetica] font-normal text-[#E8C1C5]/80 text-base tracking-[-0.20px] leading-[26px]">
+                <ul className="list-disc ml-5">
+    {itemData.answer.split("\n").map((line, index) => {
+      const trimmed = line.trim();
+      return trimmed ? <li key={index}>{trimmed.replace(/^- /, "")}</li> : null;
+    })}
+  </ul>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </motion.div>
         ))}
+      </motion.div>
       </Accordion>
+
     </div>
+
   </div>
 </div>
     </div>

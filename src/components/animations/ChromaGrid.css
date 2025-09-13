@@ -33,22 +33,8 @@
   }
 }
 
-.chroma-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 320px;
-  height: auto;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid #333;
-  transition: border-color 0.3s ease;
-  background: var(--card-gradient);
+.chroma-card { position: relative; display: flex; flex-direction: column; width: 320px; height: auto; border-radius: 20px; overflow: hidden; border: 1px solid #333; transition: border-color 0.3s ease; background: var(--card-gradient); --mouse-x: 50%; --mouse-y: 50%; --spotlight-color: rgba(255, 255, 255, 0.3); }
 
-  --mouse-x: 50%;
-  --mouse-y: 50%;
-  --spotlight-color: rgba(255, 255, 255, 0.3);
-}
 
 .chroma-card:hover {
   border-color: var(--card-border);

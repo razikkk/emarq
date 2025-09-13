@@ -90,7 +90,11 @@ export const HeroSection: React.FC = () => {
         </BlurWrapper>
       {/* </Button> */}
       <BlurWrapper delay={300}>
-      <Button variant="cta" className="h-12 px-5 rounded-lg">
+      <Button variant="cta" className="h-12 px-5 rounded-lg"
+      onClick={() => {
+        const aboutSection = document.getElementById("about");
+        aboutSection?.scrollIntoView({ behavior: "smooth" });
+      }}>
        <ShinyText
        text="What is Emarq"
        disabled={false}

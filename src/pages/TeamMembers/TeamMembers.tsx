@@ -5,25 +5,88 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { HighlightTag } from '@/components/HighlightTag';
 import ChromaGrid from '@/components/animations/ChromaGrid';
+import {motion,Variants} from 'framer-motion'
+import { InteractiveHoverButton } from '@/components/animations/magicui/interactive-hover-button';
+
+const highlightVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeInOut" }, // use string easing to avoid TS errors
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15, // delay between each word
+    },
+  },
+};
+
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut", // ✅ this is valid
+    },
+  },
+};
+
+
+const paragraphVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: "easeOut" as const } 
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const wordsRow1 = ["Meet", "the", "Team", "Making"];
+const wordsRow2 = ["Things", "Happen", "Every", "Day"];
 
 const items = [
   {
-    image: "https://i.pravatar.cc/300?img=1",
+    image: "/profile.png",
     title: "Mohammed Sinan",
-    subtitle: "Frontend Developer",
-    handle: "@sarahjohnson",
-    borderColor: "#3B82F6",
-    gradient: "linear-gradient(145deg, #3B82F6, #000)",
-    url: "https://github.com/sarahjohnson"
+    subtitle: " Digital Marketer",
+    handle: "@Sinan",
+    borderColor: "#3E2F56",
+    gradient: "linear-gradient(145deg, #3E2F56, #000)",
+    url: ""
   },
   {
-    image: "https://i.pravatar.cc/300?img=2",
-    title: "Zubair",
-    subtitle: "Backend Engineer",
-    handle: "@mikechen",
-    borderColor: "#10B981",
-    gradient: "linear-gradient(180deg, #10B981, #000)",
-    url: "https://linkedin.com/in/mikechen"
+    image: "/profile.png",
+    title: "Zubair Ahammad",
+    subtitle: "Creative Director",
+    handle: "@Zubair",
+    borderColor: "#3E2F56",
+    gradient: "linear-gradient(145deg, #3E2F56, #000)",
+    url: ""
+  },
+  {
+    image: "/profile.png",
+    title: " Minna Wahab",
+    subtitle: "Director-Marketing ",
+    handle: "@Minna",
+    borderColor: "#3E2F56",
+    gradient: "linear-gradient(145deg, #3E2F56, #000)",
+    url: ""
   }
 ];
 
@@ -31,7 +94,7 @@ const TeamMembers = () => {
   return (
     <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8">
   {/* Keep original image size and styling, but center it */}
-  <div className="flex justify-center mt-[120px] sm:mt-[160px] md:mt-[200px] lg:mt-[220px]">
+  <div className="flex justify-center mt-[120px] sm:mt-[160px] md:mt-[200px] lg:-mt-[300px]">
      {/* <div className="flex flex-col relative aspect-[3.122] w-24 sm:w-28 md:w-32 max-w-full overflow-hidden rounded-[40px]">
        <img
         src="https://api.builder.io/api/v1/image/assets/TEMP/58b56afbf83ade4953169199f3377be3d12fff87?placeholderIfAbsent=true"
@@ -40,7 +103,13 @@ const TeamMembers = () => {
       /> 
        <div className="relative border flex shrink-0 h-[41px] rounded-[40px] border-[rgba(255,255,255,0.05)] border-solid" /> 
      </div>  */}
-    <div className="flex justify-center">
+    <motion.div
+      className="flex justify-center"
+      variants={highlightVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
         <HighlightTag
           variant="dotted"
           className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
@@ -56,43 +125,72 @@ const TeamMembers = () => {
           
         />
       
-      </div>
+      </motion.div>
 
   </div>
 
   {/* Heading */}
-  <div className="mt-[25px] sm:mt-[30px] md:mt-[35px] text-center">
-    {/* First line */}
-    <div className="flex justify-center flex-wrap gap-[10px] sm:gap-[15px] text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-normal tracking-[-1.9px] leading-none text-white">
-      <span>Meet</span>
-      <span>the</span>
-      <span>Team</span>
-      <span>Making</span>
-    </div>
-    {/* Second line */}
-    <div className="flex justify-center flex-wrap gap-[10px] sm:gap-[15px] text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-normal tracking-[-1.9px] leading-none text-[#ffffff99] mt-2 sm:mt-3 md:mt-4">
-      <span>Things</span>
-      <span>Happen</span>
-      <span>Every</span>
-      <span>Day</span>
-    </div>
-  </div>
+  <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="mt-[25px] sm:mt-[30px] md:mt-[35px] text-center"
+    >
+      {/* Row 1 */}
+      <motion.div
+        variants={containerVariants}
+        className="flex justify-center flex-wrap gap-[10px] sm:gap-[15px] 
+        text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-normal 
+        tracking-[-1.9px] leading-none text-white"
+      >
+        {wordsRow1.map((word, i) => (
+          <motion.span key={i} variants={wordVariants}>
+            {word}
+          </motion.span>
+        ))}
+      </motion.div>
+
+      {/* Row 2 */}
+      <motion.div
+        variants={containerVariants}
+        className="flex justify-center flex-wrap gap-[10px] sm:gap-[15px] 
+        text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-normal 
+        tracking-[-1.9px] leading-none text-[#ffffff99] mt-2 sm:mt-3 md:mt-4"
+      >
+        {wordsRow2.map((word, i) => (
+          <motion.span key={i} variants={wordVariants}>
+            {word}
+          </motion.span>
+        ))}
+      </motion.div>
+    </motion.div>
+
 
   {/* Subtext */}
-  <p className="text-[#ffffff99] text-sm sm:text-base md:text-lg font-normal leading-relaxed tracking-[-0.2px] text-center mt-4 sm:mt-6 max-w-[90%] sm:max-w-[500px] md:max-w-[600px]">
+  <motion.p
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+  viewport={{ once: true, amount: 0.3 }}
+  className="text-[#ffffff99] text-sm sm:text-base md:text-lg font-normal 
+  leading-relaxed tracking-[-0.2px] text-center mt-4 sm:mt-6 
+  max-w-[90%] sm:max-w-[500px] md:max-w-[600px]"
+>
     Our team is made up of passionate professionals who bring their expertise and creativity to every project.
-  </p>
+  </motion.p>
 
   {/* Button */}
-  <Button   className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
-  border border-[#E8C1C5]/30 shadow-sm shadow-white/20
-  bg-gradient-to-r from-[#E8C1C5] to-[#E8C1C5] 
-  [font-family:'DM_Sans',Helvetica] font-medium text-[#3E2F56] text-base tracking-[-0.50px] leading-[26px] 
-  hover:from-[#d8a8ad] hover:to-[#d8a8ad] 
-  transition-all duration-300 ease-in-out 
-  mt-4 sm:mt-6">
-        Book an Appointment
-      </Button>
+  <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.5 }}
+  transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
+>
+
+<InteractiveHoverButton className='mt-[20px]'>Book An Appointment</InteractiveHoverButton>
+
+    </motion.div>
 
   {/* Team Members Grid */}
   {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto mt-[40px] sm:mt-[60px] md:mt-[80px]">

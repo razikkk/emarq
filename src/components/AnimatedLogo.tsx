@@ -18,25 +18,25 @@ const AnimatedLogo = () => {
 
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center bg-black z-[9999]"
+      className="fixed inset-0 flex items-center justify-center bg-[#3E2F56] z-[9999]"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
     >
       <motion.div
-        initial={{ scale: 1, x: 0, y: 0 }}
-        animate={{
-          scale: [1, 1, 0.5],
-          x: [0, 0, -windowSize.width / 2 + 120],
-          y: [0, 0, -windowSize.height / 2 + 70],
-        }}
-        transition={{
-          times: [0, 0.7, 1],
-          delay: 0.4,
-          duration: 3,
-        }}
-        onAnimationComplete={() => setShowIntro(false)}
-        className="flex"
-      >
+       initial={{ scale: 1, x: 0, y: 0, opacity: 1 }}
+  animate={{
+    scale: [1, 1.3],       // zoom forward
+    opacity: [1, 0],       // fade out
+    x: 0,                  // no horizontal movement
+    y: 0                   // no vertical movement
+  }}
+  transition={{
+    duration: 1.5,
+    ease: "easeInOut",
+    delay: 3               // wait 3s before starting zoom+fade
+  }}
+  onAnimationComplete={() => setShowIntro(false)}
+  className="flex"      >
         {["E", "M", "A", "R"].map((letter, index) => (
           <motion.span
             key={index}
@@ -61,6 +61,7 @@ const AnimatedLogo = () => {
 
        
       </motion.div>
+
     </motion.div>
   );
 };

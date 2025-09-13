@@ -10,6 +10,7 @@ import ScrollStack, { ScrollStackItem } from '@/components/animations/ScrollStac
 import { useScroll } from 'framer-motion';
 import useStackedCards from '@/components/ui/UseStackedHook';
 import { motion, Variants } from "framer-motion";
+import { InteractiveHoverButton } from '@/components/animations/magicui/interactive-hover-button';
 
 const highlightVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -230,15 +231,8 @@ useStackedCards()
   viewport={{ once: true, amount: 0.5 }}
   transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
 >
-      <Button   className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
-  border border-[#E8C1C5]/30 shadow-sm shadow-white/20
-  bg-gradient-to-r from-[#E8C1C5] to-[#E8C1C5] 
-  [font-family:'DM_Sans',Helvetica] font-medium text-[#3E2F56] text-base tracking-[-0.50px] leading-[26px] 
-  hover:from-[#d8a8ad] hover:to-[#d8a8ad] 
-  transition-all duration-300 ease-in-out 
-  mt-4 sm:mt-6">
-        View More Works
-      </Button>
+<InteractiveHoverButton className='mt-[20px]' onClick={() => window.open("https://emarq-gallery.vercel.app", "_blank")}>View Our Gallery</InteractiveHoverButton>
+
       </motion.div>
 
             {/* Portfolio Cards */}
@@ -290,6 +284,7 @@ useStackedCards()
 </div>
             </div> 
   
+           
 
           </div>
     </div>

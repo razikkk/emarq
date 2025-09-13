@@ -1,8 +1,55 @@
 import React from 'react'
 import { HighlightTag } from '@/components/HighlightTag';
 import { Button } from '@/components/ui/button';
+import {motion, Variants} from 'framer-motion'
+import { InteractiveHoverButton } from '@/components/animations/magicui/interactive-hover-button';
+
+const highlightVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeInOut" }, // use string easing to avoid TS errors
+  },
+};
+
+const sentence: Variants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const word: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut", // ✅ use string preset instead of array to satisfy TS
+    },
+  },
+};
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 const Contact = () => {
+
+  const firstLine = "Ready to Elevate Your Brand";
+  const secondLine = "with Next-Gen Innovation?";
+
   return (
     <div className="w-full flex justify-center px-4"> {/* Center the whole block */}
     <div className="border pb-[50px] rounded-[40px] border-[rgba(255,255,255,0.07)] border-solid w-full max-w-[1000px]">
@@ -23,6 +70,13 @@ const Contact = () => {
           alt=""
         /> */}
         <div className="relative flex w-full max-w-[900px] mx-auto flex-col items-center">
+        <motion.div
+      className="flex justify-center"
+      variants={highlightVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
         <HighlightTag
           variant="dotted"
           className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
@@ -36,31 +90,77 @@ const Contact = () => {
         </svg>
         }
         />
-          <h2 className="text-white text-[54px] leading-none tracking-[-1.9px] text-center mt-[35px] max-md:text-[40px]">
-            Ready to Elevate Your Brand
-          </h2>
-          <h2 className="text-white text-[54px] leading-none tracking-[-1.9px] text-center mt-[11px] max-md:text-[40px]">
-            with Next-Gen Innovation?
-          </h2>
-          <p className="text-gray-500 tracking-[-0.2px] text-center mt-[43px] max-md:mt-10">
-            Ready to take the next step? Join us now and start transforming your{" "}
-          </p>
-          <p className="text-gray-500 tracking-[-0.2px] text-center mt-[1px]">
-            vision into reality with expert support.
-          </p>
-          <div className='mt-[20px]'> 
+</motion.div>
+<div className="mt-[35px] space-y-[11px] text-center">
+      {/* First Line */}
+      <motion.h2
+        className="text-white text-[54px] leading-none tracking-[-1.9px] max-md:text-[40px]"
+        variants={sentence}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {firstLine.split(" ").map((wordText, i) => (
+          <motion.span key={i} variants={word} className="inline-block mr-2">
+            {wordText}
+          </motion.span>
+        ))}
+      </motion.h2>
+
+      {/* Second Line */}
+      <motion.h2
+        className="text-white text-[54px] leading-none tracking-[-1.9px] max-md:text-[40px]"
+        variants={sentence}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        {secondLine.split(" ").map((wordText, i) => (
+          <motion.span
+            key={i}
+            variants={word}
+            className={`inline-block mr-2 ${
+              wordText === "Next-Gen" ? "text-white/60" : ""
+            }`}
+          >
+            {wordText}
+          </motion.span>
+        ))}
+      </motion.h2>
+    </div>
+    <motion.p
+        className="text-gray-500 tracking-[-0.2px] text-center mt-[43px] max-md:mt-10"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        custom={0} // delay 0
+      >
+        Ready to take the next step? Join us now and start transforming your{" "}
+      </motion.p>
+
+      <motion.p
+        className="text-gray-500 tracking-[-0.2px] text-center mt-[1px]"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        custom={1} // delay 0.3s after first line
+      >
+        vision into reality with expert support.
+      </motion.p>
+      <motion.div
+      className='mt-[20px]'
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.5 }}
+  transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
+>
 
           
-          <Button   className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
-  border border-[#E8C1C5]/30 shadow-sm shadow-white/20
-  bg-gradient-to-r from-[#E8C1C5] to-[#E8C1C5] 
-  [font-family:'DM_Sans',Helvetica] font-medium text-[#3E2F56] text-base tracking-[-0.50px] leading-[26px] 
-  hover:from-[#d8a8ad] hover:to-[#d8a8ad] 
-  transition-all duration-300 ease-in-out 
-  mt-4 sm:mt-6">
-          Book an Appointment
-        </Button>
-</div>
+<InteractiveHoverButton className='mt-[20px]'>Book An Appointment</InteractiveHoverButton>
+
+</motion.div>
         </div>
       </div>
     </div>

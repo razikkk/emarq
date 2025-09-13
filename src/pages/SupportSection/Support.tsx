@@ -2,26 +2,82 @@ import React from 'react'
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { HighlightTag } from '@/components/HighlightTag';
-
+import {motion, Variants} from 'framer-motion'
+import { InteractiveHoverButton } from '@/components/animations/magicui/interactive-hover-button';
  
+
+const highlightVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeInOut" }, // use string easing to avoid TS errors
+  },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15, // delay between each word
+    },
+  },
+};
+
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut", // ✅ this is valid
+    },
+  },
+};
+
+
+const paragraphVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: "easeOut" as const } 
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 const supportFeatures = [
     {
-      icon: "/icon.svg",
+      icon: (<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" className="bi bi-telephone-outbound" viewBox="0 0 16 16">
+      <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5"/>
+    </svg>),
       title: "Fast Responses",
       description: "Get timely answers to your questions.",
-      backgroundImage:
-        "/figure---abstract-dots---1xoqma4saawbcrdkisjfixups-png-11.png",
+      backgroundColor:
+        "#E8C1C5"
     },
     {
-      icon: "/icon-3.svg",
+      icon: (<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" className="bi bi-lightbulb" viewBox="0 0 16 16">
+      <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"/>
+    </svg>),
       title: "Expert Guidance",
       description: "Our team understands both design and tech.",
       backgroundImage:
         "/figure---abstract-dots---1xoqma4saawbcrdkisjfixups-png-12.png",
     },
     {
-      icon: "/icon-5.svg",
+      icon:(<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" className="bi bi-headset" viewBox="0 0 16 16">
+      <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
+    </svg>),
       title: "Continuous Help",
       description: "Support doesn't stop after launch.",
       backgroundImage:
@@ -60,7 +116,12 @@ const supportFeatures = [
     }
   ];
   
+  
 const Support = () => {
+
+  const wordsRow1 = ["Here", "When", "You"];
+  const wordsRow2 = ["Need", "Us", "Most", "Important."];
+
   return (
     <div className="relative min-h-[1063px] bg-[url(/light-rays---rays-2.png)] bg-cover bg-center pt-32 sm:pt-36 lg:pt-44">
                   <hr className="border-0 h-px bg-[#E8C1C5]/30 mb-24" />
@@ -69,7 +130,13 @@ const Support = () => {
   
     <div className="relative z-10 max-w-6xl mx-auto px-4 text-center space-y-8">
       {/* Highlight tag */}
-      <div className="flex justify-center">
+      <motion.div
+      className="flex justify-center"
+      variants={highlightVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
         <HighlightTag
           variant="dotted"
           className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
@@ -84,35 +151,63 @@ const Support = () => {
 </svg>
           }
         />
-      </div>
+      </motion.div>
   
       {/* Main Heading */}
-      <div className="pt-10">
-        <h1 className="text-white text-3xl sm:text-5xl lg:text-[54px] leading-tight tracking-[-1.9px]">
-          Here When You
-        </h1>
-        <h1 className="text-white/60 text-3xl sm:text-5xl lg:text-[54px] leading-tight tracking-[-1.9px]">
-          Need Us Most Important.
-        </h1>
-      </div>
+     <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="w-full pt-10"
+    >
+      {/* Row 1 */}
+      <motion.div
+        className="relative flex flex-wrap justify-center w-full gap-3 
+        text-white font-normal text-center tracking-[-1.9px] leading-none 
+        text-3xl sm:text-5xl lg:text-[54px] z-10"
+      >
+        {wordsRow1.map((word, i) => (
+          <motion.span key={i} variants={wordVariants} className="relative">
+            {word}
+          </motion.span>
+        ))}
+      </motion.div>
+
+      {/* Row 2 */}
+      <motion.div
+        className="relative flex flex-wrap justify-center w-full gap-3 
+        text-white/60 font-normal text-center tracking-[-1.9px] leading-none 
+        mt-3 text-3xl sm:text-5xl lg:text-[54px] z-10"
+      >
+        {wordsRow2.map((word, i) => (
+          <motion.span key={i} variants={wordVariants} className="relative">
+            {word}
+          </motion.span>
+        ))}
+      </motion.div>
+    </motion.div>
   
       {/* Subtext */}
-      <div className="max-w-[520px] mx-auto">
-        <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+      <motion.div className="max-w-[520px] mx-auto" initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+>
+        <motion.p variants={paragraphVariants} className="text-white/60 text-sm sm:text-base leading-relaxed">
           Emarq comes with dedicated support to help you launch and maintain your site without friction.
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
   
       {/* Button */}
-      <Button   className="w-full sm:w-[195px] h-[46px] rounded-[10px] 
-  border border-[#E8C1C5]/30 shadow-sm shadow-white/20
-  bg-gradient-to-r from-[#E8C1C5] to-[#E8C1C5] 
-  [font-family:'DM_Sans',Helvetica] font-medium text-[#3E2F56] text-base tracking-[-0.50px] leading-[26px] 
-  hover:from-[#d8a8ad] hover:to-[#d8a8ad] 
-  transition-all duration-300 ease-in-out 
-  mt-4 sm:mt-6">
-         Talk To Us
-        </Button>
+      <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.5 }}
+  transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
+>
+<InteractiveHoverButton>Talk To Us</InteractiveHoverButton>
+
+        </motion.div>
   
       {/* Chat bubbles + features */}
       <div className="relative mt-[100px] px-4 sm:px-20">
@@ -163,36 +258,40 @@ const Support = () => {
 
   
           {/* Features grid */}
-          <div className="relative z-10 pt-[244px]">
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-    {supportFeatures.map((feature, index) => (
-      <Card
-        key={index}
-        className="backdrop-blur-md border border-white/10 rounded-xl relative overflow-hidden flex flex-col h-auto sm:h-[200px] text-left bg-white/5"
-      >
-        {/* Background image with overlay blur */}
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20 blur-sm"
-          style={{ backgroundImage: `url(${feature.backgroundImage})` }}
-        />
+          <motion.div
+      className="relative z-10 pt-[244px]"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {supportFeatures.map((feature, index) => (
+          <motion.div key={index} variants={cardVariants}>
+            <Card className="backdrop-blur-md border border-white/10 rounded-xl relative overflow-hidden flex flex-col h-auto sm:h-[200px] text-left bg-white/5">
+              {/* Background image with overlay blur */}
+              <div
+                className="bg-red absolute inset-0 bg-cover bg-center opacity-20 blur-sm"
+              />
 
-        <CardContent className="relative z-10 p-6 flex flex-col items-start gap-4">
-          <img className="w-10 h-10" alt="Icon" src={feature.icon} />
-
-          <div>
-            <h3 className="font-semibold text-[#E8C1C5] text-lg mb-2">
-              {feature.title}
-            </h3>
-            <p className="text-[#E8C1C5]/70 text-sm sm:text-base leading-relaxed">
-              {feature.description}
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-    ))}
-  </div>
+              <CardContent className="relative z-10 p-6 flex flex-col items-start gap-4">
+              <div className="w-20 h-20 text-[#E8C1C5]">
+  {feature.icon}
 </div>
-
+                <div className='-mt-8'>
+                  <h3 className="font-semibold text-[#E8C1C5] text-lg mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-[#E8C1C5]/70 text-sm sm:text-base leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
         </div>
       </div>
     </div>

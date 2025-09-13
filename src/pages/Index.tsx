@@ -22,6 +22,7 @@ import { BackgroundGradientAnimation } from "@/components/ui/shadcn-io/backgroun
 import GradualBlur from "@/components/animations/GradualBlur";
 import LightRays from "@/components/animations/LightRays";
 import Particles from "@/components/animations/Particles";
+import ThreeDBackground from "@/components/ui/3dBackground";
 
 
 
@@ -46,14 +47,14 @@ const Index = () => {
     <div className="bg-[#3E2F56] min-h-screen text-white overflow-x-hidden "
     >
     
-      {/* <motion.div
+      <motion.div
       className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999]"
       animate={{
         x: mousePosition.x - 7, // center the circle
         y: mousePosition.y - 7
       }}
       transition={{type:'spring', stiffness:80, damping:15}}
-      /> */}
+      />
 
       {/* <AnimatedLogo/> */}
       <SmoothScroll>
@@ -70,7 +71,7 @@ const Index = () => {
       id="about"
       className="relative z-10 w-full max-w-[1440px] mx-auto px-5 pt-[40px] pb-[70px] max-md:pt-[30px] max-md:pb-[40px]"
     >
-      <About />
+      <About/>
     </section>
 
     {/* Innovation Section */}
@@ -125,9 +126,9 @@ const Index = () => {
     </section>
 
     {/* Testimonials Section */}
-    <section className="w-full max-w-[1400px] mx-auto overflow-hidden mt-[437px] rounded-[20px] px-5 max-md:mt-10">
+    {/* <section className="w-full max-w-[1400px] mx-auto overflow-hidden mt-[437px] rounded-[20px] px-5 max-md:mt-10">
       <Testimonial />
-    </section>
+    </section> */}
 
     {/* FAQ Section */}
     <section id="faq" className="overflow-hidden w-full px-5">
