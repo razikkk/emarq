@@ -32,7 +32,10 @@ const handleModal = ()=>{
           >
           <span className="cursor-pointer hover:text-white transition">Home</span>
           <span className="text-white/90">•</span>
-          <span className="cursor-pointer hover:text-white transition">About</span>
+          <span className="cursor-pointer hover:text-white transition"
+          onClick={() => {
+            document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+          }}>About</span>
         </nav>
 
         {/* Center Logo */}
@@ -42,7 +45,7 @@ const handleModal = ()=>{
 
         {/* Right Menu */}
         <nav className="flex items-center gap-6 text-white/70 text-lg">
-          <span className="cursor-pointer hover:text-white transition">Gallery</span>
+          <span className="cursor-pointer hover:text-white transition" onClick={() => window.open("https://emarq-gallery.vercel.app", "_blank")}>Gallery</span>
           <span className="text-white/90">•</span>
 
           <span className="cursor-pointer hover:text-white transition" onClick={handleModal}>Contact</span>
