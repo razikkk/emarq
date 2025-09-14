@@ -39,8 +39,13 @@ export const Footer: React.FC = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.5 }}
       >
-        <h1 className="font-leagueSpartan text-2xl md:text-4xl text-white text-center">
-          EMARQ.
+        <h1 className="font-leagueSpartan font-bold text-2xl md:text-4xl text-white text-center flex items-center justify-center gap-1 ">
+          EMAR
+          <img
+    src="/q.png"
+    alt="Q"
+    className="w-26 h-26 md:w-16 md:h-16 object-contain -ml-5 mb-2"
+  />
         </h1>
       </motion.div>
   
