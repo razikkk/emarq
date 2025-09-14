@@ -1,10 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Button } from '@/components/ui/button';
 import { HighlightTag } from '@/components/HighlightTag';
 import GradualBlurMemo from '@/components/animations/GradualBlur';
 import ScrollFloat from '@/components/animations/ScrollFloat';
 import { motion,Variants } from "framer-motion";
 import { InteractiveHoverButton } from '@/components/animations/magicui/interactive-hover-button';
+import ContactModal from '@/components/ui/ContactModal';
 
 const highlightVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -16,6 +17,8 @@ const highlightVariants: Variants = {
 const Innovation = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const words = ["Fueled", "By", "Ideas."];
+  const [openModal,setOpenModal] = useState(false)
+
 
   return (
     <div>
@@ -98,9 +101,13 @@ const Innovation = () => {
   viewport={{ once: true, amount: 0.5 }}
   transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
 >
-<InteractiveHoverButton className='mt-[20px]'>Book An Appointment</InteractiveHoverButton>
+<InteractiveHoverButton className='mt-[20px]' onClick={()=> setOpenModal(true)}>Book An Appointment</InteractiveHoverButton>
 
         </motion.div>
+        <ContactModal
+  isOpen={openModal}
+  onClose={() => setOpenModal(false)}
+/>
 
       </div>
     </div>

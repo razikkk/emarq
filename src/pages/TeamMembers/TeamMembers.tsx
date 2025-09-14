@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TeamMemberCard } from '@/components/TeamMemberCard';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,6 +7,8 @@ import { HighlightTag } from '@/components/HighlightTag';
 import ChromaGrid from '@/components/animations/ChromaGrid';
 import {motion,Variants} from 'framer-motion'
 import { InteractiveHoverButton } from '@/components/animations/magicui/interactive-hover-button';
+import ContactModal from '@/components/ui/ContactModal';
+
 
 const highlightVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -65,7 +67,8 @@ const items = [
     image: "/profile.png",
     title: "Mohammed Sinan",
     subtitle: " Digital Marketer",
-    handle: "@Sinan",
+    whatsapp: "https://wa.me/971545748033", // replace with full number
+    gmail: "mailto:sinan@emarq.ae",
     borderColor: "#3E2F56",
     gradient: "linear-gradient(145deg, #3E2F56, #000)",
     url: ""
@@ -74,7 +77,8 @@ const items = [
     image: "/profile.png",
     title: "Zubair Ahammad",
     subtitle: "Creative Director",
-    handle: "@Zubair",
+    whatsapp: "https://wa.me/971558092534", // replace with full number
+    gmail: "mailto:zubair@emarq.ae",
     borderColor: "#3E2F56",
     gradient: "linear-gradient(145deg, #3E2F56, #000)",
     url: ""
@@ -83,7 +87,8 @@ const items = [
     image: "/profile.png",
     title: " Minna Wahab",
     subtitle: "Director-Marketing ",
-    handle: "@Minna",
+    whatsapp: "https://wa.me/971521569430", // replace with full number
+    gmail: "mailto:minna@emarq.ae",
     borderColor: "#3E2F56",
     gradient: "linear-gradient(145deg, #3E2F56, #000)",
     url: ""
@@ -91,6 +96,8 @@ const items = [
 ];
 
 const TeamMembers = () => {
+
+  const [openModal, setOpenModal] = useState(false)
   return (
     <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8">
   {/* Keep original image size and styling, but center it */}
@@ -188,9 +195,13 @@ const TeamMembers = () => {
   transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
 >
 
-<InteractiveHoverButton className='mt-[20px]'>Book An Appointment</InteractiveHoverButton>
+<InteractiveHoverButton className='mt-[20px]' onClick={()=>setOpenModal(true)}>Book An Appointment</InteractiveHoverButton>
 
     </motion.div>
+    <ContactModal
+  isOpen={openModal}
+  onClose={() => setOpenModal(false)}
+/>
 
   {/* Team Members Grid */}
   {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px] mx-auto mt-[40px] sm:mt-[60px] md:mt-[80px]">

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { HighlightTag } from '@/components/HighlightTag';
 import ScrollReveal from '../components/animations/ScrollReveal'
@@ -6,6 +6,7 @@ import BlurWrapper from '@/components/ui/shadcn-io/blur-text/Blurwrapper';
 import { InteractiveHoverButton } from '@/components/animations/magicui/interactive-hover-button';
 import { TextReveal } from '@/components/magicui/text-reveal';
 import { motion, Variants } from "framer-motion";
+import ContactModal from '@/components/ui/ContactModal';
 
 
 const highlightVariants: Variants = {
@@ -25,6 +26,7 @@ const About = () => {
 
 // const value = 'Emarq Marketing & Production L.L.C is a Dubai-based agency combining creative storytelling, digital marketing, and data-driven strategies to help brands grow, engage audiences, and achieve measurable results.'
 // const words = value.split("")
+const [openModal,setOpenModal] = useState(false)
   return (
     <div>
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center space-y-8">
@@ -64,7 +66,7 @@ const About = () => {
           blurStrength={10}
           textClassName="text-4xl lg:text-5xl font-normal leading-tight tracking-[-2px] max-w-3xl"
           >
-        'Emarq Marketing & Production L.L.C is a Dubai-based agency combining creative storytelling, digital marketing, and data-driven strategies to help brands grow, engage audiences, and achieve measurable results.'
+        'Emarq Marketing & Production is a Dubai-based agency combining creative storytelling, digital marketing, and data-driven strategies to help brands grow, engage audiences, and achieve measurable results.'
         </ScrollReveal>
         {/* <TextReveal className="text-4xl lg:text-5xl font-normal leading-tight tracking-[-2px] max-w-3xl">Emarq Marketing & Production L.L.C is a Dubai-based agency combining creative storytelling, digital marketing, and data-driven strategies to help brands grow, engage audiences, and achieve measurable results.</TextReveal> */}
 
@@ -78,11 +80,14 @@ const About = () => {
   viewport={{ once: true, amount: 0.5 }}
   transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
 >
-        <InteractiveHoverButton>
-       
-Book An Appointment
-</InteractiveHoverButton>
+<InteractiveHoverButton onClick={() => setOpenModal(true)}>
+    Book An Appointment
+  </InteractiveHoverButton>
 </motion.div>
+<ContactModal
+  isOpen={openModal}
+  onClose={() => setOpenModal(false)}
+/>
       </div>
     </div>
   );

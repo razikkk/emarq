@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface PortfolioFeature {
   icon: string;
@@ -6,12 +6,13 @@ interface PortfolioFeature {
 }
 
 interface PortfolioCardProps {
-  year: string;
+  year?: string;
   title: string;
   features: PortfolioFeature[];
   tags: string[];
   image1: string;
   image2: string;
+  imageClassName: string
 }
 
 export const PortfolioCard: React.FC<PortfolioCardProps> = ({
@@ -20,10 +21,12 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
   features,
   tags,
   image1,
-  image2
+  image2,
+  imageClassName = ""
 }) => {
   return (
     <article className="bg-[#3E2F56]/30 backdrop-blur-lg shadow-[0px_1px_1px_-1px_rgba(0,0,0,0.09)] w-full max-w-[1200px] overflow-hidden rounded-[30px] max-md:max-w-full">
+      
   <div className="border p-2.5 rounded-[30px] border-[rgba(255,255,255,0.07)] border-solid max-md:max-w-full">
     <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
       
@@ -70,7 +73,7 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
                 {tags.map((tag, index) => (
                   <div key={index} className="bg-[#3E2F56]/50 backdrop-blur-sm overflow-hidden rounded-[40px]">
                     <div className="overflow-hidden">
-                      <div className="border flex flex-col items-stretch justify-center px-4 py-3.5 rounded-[40px] border-[rgba(255,255,255,0.05)] border-solid">
+                      <div className="border flex flex-col items-stretch justify-center px-4 py-2.5 rounded-[40px] border-[rgba(255,255,255,0.05)] border-solid">
                         <div className="text-[#E8C1C5]">{tag}</div>
                       </div>
                     </div>
@@ -84,22 +87,21 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
       </div>
 
       {/* Middle image */}
-      <div className="w-[33%] ml-5 max-md:w-full max-md:ml-0">
-        <img
-          src={image1}
-          className="aspect-[1.15] object-contain w-full grow rounded-[22px] max-md:mt-5"
-          alt="Portfolio project"
-        />
-      </div>
+      <div className="w-[33%] ml-5 max-md:w-full max-md:ml-0 flex justify-center overflow-hidden rounded-[22px]">
+  <img
+    src={image1}
+    className={`aspect-[1.15] object-cover w-full ${imageClassName}`}
+    alt="Portfolio project"
+  />
+</div>
 
-      {/* Right image */}
-      <div className="w-[33%] ml-5 max-md:w-full max-md:ml-0">
-        <img
-          src={image2}
-          className="aspect-[1.15] object-contain w-full grow rounded-[22px] max-md:mt-5"
-          alt="Portfolio project"
-        />
-      </div>
+<div className="w-[33%] ml-5 max-md:w-full max-md:ml-0 flex justify-center overflow-hidden rounded-[22px]">
+  <img
+    src={image2}
+    className={`aspect-[1.15] object-cover w-full ${imageClassName}`}
+    alt="Portfolio project"
+  />
+</div>
     </div>
   </div>
 </article>

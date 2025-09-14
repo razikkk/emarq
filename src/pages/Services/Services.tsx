@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ServiceCard } from '@/components/ServiceCard';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,6 +10,7 @@ import { motion, Variants } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { InteractiveHoverButton } from '@/components/animations/magicui/interactive-hover-button';
+import ContactModal from '@/components/ui/ContactModal';
 
 
 
@@ -167,6 +168,7 @@ const Services = () => {
   const stackAreaRef = useRef<HTMLDivElement>(null);
   const headingText = "Our Services";
   const words = headingText.split(" ");
+  const [openModal,setOpenModal] = useState(false)
 
   const paragraph = [
     "We", "help", "brands", 
@@ -298,9 +300,13 @@ const Services = () => {
   viewport={{ once: true, amount: 0.5 }}
   transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
 >
-<InteractiveHoverButton className='mt-[20px]'>See Our Magic</InteractiveHoverButton>
+<InteractiveHoverButton className='mt-[20px]' onClick={()=> setOpenModal(true)}>See Our Magic</InteractiveHoverButton>
 
       </motion.div>
+      <ContactModal
+  isOpen={openModal}
+  onClose={() => setOpenModal(false)}
+/>
 </div>
 
       {/* Right Section */}

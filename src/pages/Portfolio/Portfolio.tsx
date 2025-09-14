@@ -237,49 +237,68 @@ useStackedCards()
 
             {/* Portfolio Cards */}
         <div className=" cards relative mt-[60px] max-md:mt-10 space-y-8 sm:space-y-10 w-full max-w-6xl">
-              <div className='custom-card card1'>
+              <div className='custom-card card1 flex flex-col items-center'>
               <PortfolioCard
-                year="2024"
-                title="Lemonide Tech"
+                // year="2024"
+                title="Perfume Product Photography"
                 features={[
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/32a4530ec069805e3ebae1d9d7551c98664be11f?placeholderIfAbsent=true", text: "AI Integration" },
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/32a4530ec069805e3ebae1d9d7551c98664be11f?placeholderIfAbsent=true", text: "Responsive Design" },
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/32a4530ec069805e3ebae1d9d7551c98664be11f?placeholderIfAbsent=true", text: "Custom Layouts" },
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/32a4530ec069805e3ebae1d9d7551c98664be11f?placeholderIfAbsent=true", text: "Fast Loading" }
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/32a4530ec069805e3ebae1d9d7551c98664be11f?placeholderIfAbsent=true", text: "Studio Lighting" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/32a4530ec069805e3ebae1d9d7551c98664be11f?placeholderIfAbsent=true", text: "Luxury Aesthetics" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/32a4530ec069805e3ebae1d9d7551c98664be11f?placeholderIfAbsent=true", text: "Detail Focus" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/32a4530ec069805e3ebae1d9d7551c98664be11f?placeholderIfAbsent=true", text: "Brand Consistency" }
                 ]}
-                tags={["E-Commerce", "Portfolio"]}
-                image1="https://api.builder.io/api/v1/image/assets/TEMP/f5fe4f840d593b302ad9ce0391640f5bd3d78895?placeholderIfAbsent=true"
-                image2="https://api.builder.io/api/v1/image/assets/TEMP/f4e865051721b7bb561405fa978c50b43fa5e916?placeholderIfAbsent=true"
+                tags={["Product", "Photography"]}
+                image1="/product1.PNG"
+                image2="/product2.PNG"
+                imageClassName="rounded-xl mx-auto"
               />
              </div>
              <div className='custom-card card2'>
               <PortfolioCard
-                year="2025"
-                title="Viper Studio"
+                // year="2025"
+                title="Luxury Car Photography"
                 features={[
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/ea61d7cfe3e004e89aa201447b44ba1920dbd59a?placeholderIfAbsent=true", text: "Modern Typography" },
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/d796e748a358ac1b3f7c21286b97de7702805f8c?placeholderIfAbsent=true", text: "User Friendly" },
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/a346c02abe0908fee6e23850fe8c1a179941b52a?placeholderIfAbsent=true", text: "Flexible CMS" },
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/f9d73010b28d691da8c603afb2320d23cdfe4ed4?placeholderIfAbsent=true", text: "SEO Optimized" }
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/ea61d7cfe3e004e89aa201447b44ba1920dbd59a?placeholderIfAbsent=true", text: "Dynamic Angles" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/d796e748a358ac1b3f7c21286b97de7702805f8c?placeholderIfAbsent=true", text: "Motion Capture" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/a346c02abe0908fee6e23850fe8c1a179941b52a?placeholderIfAbsent=true", text: "High Gloss Finish" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/f9d73010b28d691da8c603afb2320d23cdfe4ed4?placeholderIfAbsent=true", text: "Power & Precision" }
                 ]}
-                tags={["Business", "Agency"]}
-                image1="https://api.builder.io/api/v1/image/assets/TEMP/c8bad13c4ea7315a8750fcb379166bec8ae17039?placeholderIfAbsent=true"
-                image2="https://api.builder.io/api/v1/image/assets/TEMP/62ca4baffc71a8c953f56227f1fbffcf171eda70?placeholderIfAbsent=true"
+                tags={["Luxury", "Automotive"]}
+                image1="/automotive1.JPG"
+                image2="/automotive2.JPG"
+                imageClassName="rounded-xl mx-auto"
               />
               </div>
               <div className='custom-card card3'>             
               <PortfolioCard
-                year="2025"
-                title="Million One"
+                // year="2025"
+                title="Gourmet Food Photography"
                 features={[
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/e6d0a9f306c61bf864832706754d86e1bd79dd6a?placeholderIfAbsent=true", text: "Easy Customization" },
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/e25d1d7e4e641ed194e072bcdd58b4c8c9c1e191?placeholderIfAbsent=true", text: "Interactive Elements" },
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/34d6e45870c088ea6864e2a4f58bcb4a4f1a84bc?placeholderIfAbsent=true", text: "Retina Ready" },
-                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/0f8e561b863c3fae3f6c405330df0090556a5c96?placeholderIfAbsent=true", text: "High Performance" }
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/e6d0a9f306c61bf864832706754d86e1bd79dd6a?placeholderIfAbsent=true", text: "Rich Textures" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/e25d1d7e4e641ed194e072bcdd58b4c8c9c1e191?placeholderIfAbsent=true", text: "Natural Lighting" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/34d6e45870c088ea6864e2a4f58bcb4a4f1a84bc?placeholderIfAbsent=true", text: "Vibrant Colors" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/0f8e561b863c3fae3f6c405330df0090556a5c96?placeholderIfAbsent=true", text: "Appetite Appeal" }
                 ]}
-                tags={["Portfolio", "Agency"]}
-                image1="https://api.builder.io/api/v1/image/assets/TEMP/9b9f21a7b7ed3617570f724eded4dcb52d588540?placeholderIfAbsent=true"
-                image2="https://api.builder.io/api/v1/image/assets/TEMP/b7c86a82f0370eab5e2454fccaad49e71d95e2ca?placeholderIfAbsent=true"
+                tags={["Culinary", "Gourmet"]}
+                image1="/food1.PNG"
+                image2="/food2.PNG"
+                imageClassName="rounded-xl mx-auto"
+              />
+</div>
+<div className='custom-card card4'>             
+              <PortfolioCard
+                // year="2025"
+                title=" Model Photography"
+                features={[
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/e6d0a9f306c61bf864832706754d86e1bd79dd6a?placeholderIfAbsent=true", text: "Professional Lighting" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/e25d1d7e4e641ed194e072bcdd58b4c8c9c1e191?placeholderIfAbsent=true", text: "Creative Posing" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/34d6e45870c088ea6864e2a4f58bcb4a4f1a84bc?placeholderIfAbsent=true", text: "Fashion Focus" },
+                  { icon: "https://api.builder.io/api/v1/image/assets/TEMP/0f8e561b863c3fae3f6c405330df0090556a5c96?placeholderIfAbsent=true", text: "Editorial Quality" }
+                ]}
+                tags={["Fashion", "Editorial"]}
+                image1="/model1.JPG"
+                image2="/model2.JPEG"
+                imageClassName="rounded-xl mx-auto"
               />
 </div>
             </div> 

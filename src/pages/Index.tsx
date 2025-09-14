@@ -23,12 +23,15 @@ import GradualBlur from "@/components/animations/GradualBlur";
 import LightRays from "@/components/animations/LightRays";
 import Particles from "@/components/animations/Particles";
 import ThreeDBackground from "@/components/ui/3dBackground";
+import Preloader from "@/components/ui/Preloader";
 
 
 
 const Index = () => {
 
   const [mousePosition,setMousePosition] = useState({x:0,y:0})
+  const [loading, setLoading] = useState(true);
+
 
   useEffect(()=>{
     const handleMouseMove = (e)=>{
@@ -46,6 +49,7 @@ const Index = () => {
     
     <div className="bg-[#3E2F56] min-h-screen text-white overflow-x-hidden "
     >
+      
     
       <motion.div
       className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999]"
@@ -57,19 +61,23 @@ const Index = () => {
       />
 
       {/* <AnimatedLogo/> */}
+        <Navbar />
       <SmoothScroll>
      
-  <Navbar />
+      {loading ? (
+        <AnimatedLogo onFinish={() => setLoading(false)} />
+      ) : (
+        <>
   <HeroSection />
 
   <main>
   
     {/* About Section */}
-    <section className="rotate-[3.141592653589793rad] flex w-full max-w-[1440px] mx-auto h-1" />
+    {/* <section className="  bg-[#3E2F56] rotate-[3.141592653589793rad] flex w-full max-w-[1440px] mx-auto h-1" /> */}
     
     <section
       id="about"
-      className="relative z-10 w-full max-w-[1440px] mx-auto px-5 pt-[40px] pb-[70px] max-md:pt-[30px] max-md:pb-[40px]"
+  className=" relative z-10 w-full max-w-[1440px] mx-auto px-5 pt-[40px] pb-[70px] max-md:pt-[30px] max-md:pb-[40px]"
     >
       <About/>
     </section>
@@ -145,7 +153,8 @@ const Index = () => {
   </main>
 
   <Footer />
- 
+  </>
+      )}
 
    
   

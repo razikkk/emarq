@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { HighlightTag } from './HighlightTag';
 import { Button } from './ui/button';
 import ShinyText from './animations/ShinyText';
@@ -6,14 +6,17 @@ import RotatingText from './animations/RotatingText';
 import BlurText from './ui/shadcn-io/blur-text';
 import BlurWrapper from './ui/shadcn-io/blur-text/Blurwrapper';
 import { InteractiveHoverButton } from './animations/magicui/interactive-hover-button';
+import Dock from './animations/Dock';
+import ContactModal from './ui/ContactModal';
 
 
 
 export const HeroSection: React.FC = () => {
+  const [openModal,setOpenModal] = useState(false)
 
 
   return (
-    <header className="relative  flex flex-col items-center pb-[57px] pt-16 px-4 overflow-hidden max-md:pb-8 max-md:pt-8">
+    <header className="relative  flex flex-col items-center pb-[57px] pt-16 px-4 overflow-hidden max-md:pb-8 max-md:pt-8 bg-[#3E2F56]">
     {/* Spacer */}
     <div className="flex w-full max-w-screen-xl h-40 max-md:h-16" />
 
@@ -81,16 +84,22 @@ export const HeroSection: React.FC = () => {
 
 
     {/* Buttons */}
-    <div className="relative z-10 flex flex-wrap justify-center gap-3 font-medium tracking-[-0.5px] mt-[42px] max-md:mt-6">
+    <div className="relative z-100 flex flex-wrap justify-center gap-3 font-medium tracking-[-0.5px] mt-[42px] max-md:mt-6">
       {/* <Button variant="default" className="bg-white text-[#3E2F56] hover:bg-[#d8a8ad] h-12 px-5 rounded-lg"> */}
         {/* Connect With Us */}
         <BlurWrapper delay={200}>
 
-        <InteractiveHoverButton>Connect with Us</InteractiveHoverButton>
+        <InteractiveHoverButton onClick={()=>setOpenModal(true)}>Connect with Us</InteractiveHoverButton>
+        
         </BlurWrapper>
+        <ContactModal
+  isOpen={openModal}
+  onClose={() => setOpenModal(false)}
+/>
+        
       {/* </Button> */}
       <BlurWrapper delay={300}>
-      <Button variant="cta" className="h-12 px-5 rounded-lg"
+      <Button variant="cta" className="h-11 px-5 rounded-[50px]"
       onClick={() => {
         const aboutSection = document.getElementById("about");
         aboutSection?.scrollIntoView({ behavior: "smooth" });
@@ -112,13 +121,23 @@ export const HeroSection: React.FC = () => {
     />   */}
 
     {/* Decoration */}
-    <div className="relative z-10 w-full max-w-lg mt-5 max-md:mt-3">
-      <img
-        src="https://api.builder.io/api/v1/image/assets/TEMP/346ba80e40fe720d782e6c494fd1452e0ee98717?placeholderIfAbsent=true"
-        className="aspect-[5.38] object-contain w-full"
-        alt="Hero bottom decoration"
-      />
-    </div>
+    <div className="absolute bottom-0 left-0 w-full h-[240px] max-md:h-12 z-20">
+  <div
+    className="w-full h-full"
+    style={{
+      background: "linear-gradient(to top, #3E2F56, #3E2F56)" // fully solid
+    }}
+  />
+</div>
+
+{/* Existing decoration image */}
+<div className="relative z-10 w-full max-w-lg mt-5 max-md:mt-3">
+  <img
+    src="https://api.builder.io/api/v1/image/assets/TEMP/346ba80e40fe720d782e6c494fd1452e0ee98717?placeholderIfAbsent=true"
+    className="aspect-[5.38] object-contain w-full"
+    alt="Hero bottom decoration"
+  />
+</div>
   </header>
   );
 };

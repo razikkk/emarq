@@ -43,7 +43,7 @@ const FeaturesSection = () => {
         <div className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full mb-5 sm:mb-6">
           <div className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-[#E8C1C5]/60 to-[#E8C1C5]/90">
             <div className="w-full h-full rounded-full flex items-center justify-center bg-gradient-to-r from-[#E8C1C5]/60 to-[#E8C1C5]/90">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-[#fff]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-[#3E2F56]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
@@ -69,7 +69,7 @@ const FeaturesSection = () => {
         <div className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full mb-5 sm:mb-6">
           <div className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-[#E8C1C5]/60 to-[#E8C1C5]/90">
             <div className="w-full h-full rounded-full flex items-center justify-center bg-gradient-to-r from-[#E8C1C5]/60 to-[#E8C1C5]/90">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-[#fff]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-[#3E2F56]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
@@ -93,7 +93,7 @@ const FeaturesSection = () => {
         <div className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full mb-5 sm:mb-6">
           <div className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-[#E8C1C5]/60 to-[#E8C1C5]/90">
             <div className="w-full h-full rounded-full flex items-center justify-center bg-gradient-to-r from-[#E8C1C5]/60 to-[#E8C1C5]/90">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-[#fff]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-[#3E2F56]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>

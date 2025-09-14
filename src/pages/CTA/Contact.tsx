@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { HighlightTag } from '@/components/HighlightTag';
 import { Button } from '@/components/ui/button';
 import {motion, Variants} from 'framer-motion'
 import { InteractiveHoverButton } from '@/components/animations/magicui/interactive-hover-button';
+import ContactModal from '@/components/ui/ContactModal';
 
 const highlightVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -49,6 +50,8 @@ const Contact = () => {
 
   const firstLine = "Ready to Elevate Your Brand";
   const secondLine = "with Next-Gen Innovation?";
+
+  const [openModal,setOpenModal] = useState(false)
 
   return (
     <div className="w-full flex justify-center px-4"> {/* Center the whole block */}
@@ -158,9 +161,13 @@ const Contact = () => {
 >
 
           
-<InteractiveHoverButton className='mt-[20px]'>Book An Appointment</InteractiveHoverButton>
+<InteractiveHoverButton className='mt-[20px]' onClick={()=>setOpenModal(true)}>Book An Appointment</InteractiveHoverButton>
 
 </motion.div>
+<ContactModal
+  isOpen={openModal}
+  onClose={() => setOpenModal(false)}
+/>
         </div>
       </div>
     </div>

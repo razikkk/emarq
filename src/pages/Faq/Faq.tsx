@@ -11,66 +11,72 @@ import {motion, Variants} from 'framer-motion'
     const faqItems = [
       {
         id: "item-1",
-        question: "What services does your agency offer?",
-        answer: `We provide a full suite of marketing solutions to elevate your brand:
-
-        - Digital Marketing: Strategic campaigns across social media, email, and PPC to boost your online presence.
-        - Video Production: High-quality videos for brand storytelling, advertisements, and social media content.
-        - Website Development: Custom websites designed for optimal user experience and conversion.
-        - SEO: Search engine optimization to improve your website's visibility and ranking.
-        - Logo Design: Unique and memorable logos that reflect your brand identity.
-        - Photography: Professional studio and on-location shoots for products, portraits, and events.`
+        question: "What services does Emarq provide as a marketing agency in Dubai?",
+        answer: `Emarq offers a full suite of digital marketing and production services in Dubai, including
+        branding, social media marketing (SMM), web design and development, SEO,
+        performance marketing, influencer marketing, content creation, photography,
+        videography, and PR services.`
       },
       {
         id: "item-2",
-        question: "How long does it take to see results from digital marketing campaigns?",
-        answer: `The timeline varies based on the campaign type and objectives. Generally:
-
-        PPC Advertising: Immediate traffic and results.
-        
-        SEO: 3–6 months to see significant improvements in rankings and organic traffic.
-        
-        Social Media Campaigns: 1–2 months to build engagement and brand awareness.
-        
-        We provide regular reports to track progress and adjust strategies as needed.`
+        question: "How can Emarq help improve my brand presence in Dubai?",
+        answer: `Through professional branding, social media strategies, high-quality content creation,
+        and PR campaigns, Emarq helps businesses in Dubai build a strong and recognizable
+        brand presence.`
       },
       {
         id: "item-3",
-        question: "Do you offer customized packages for small businesses?",
-        answer: `Absolutely! We understand that each business has unique needs and budgets. Our team works closely with you to create tailored packages that align with your goals and resources.`
+        question: "What types of content creation does Emarq specialize in?",
+        answer: `We specialize in automotive, lifestyle, F&B, and product photography and videography,
+        event coverage, social media reels, promotional videos, and organic content marketing to maximize engagement.`
       },
       {
         id: "item-4",
-        question: "What sets your agency apart from others in Dubai?",
-        answer: `Our agency stands out due to:
-
-        Comprehensive Services: We offer a one-stop solution for all your marketing needs.
-        
-        Local Expertise: Deep understanding of the Dubai market and consumer behavior.
-        
-        Creative Excellence: A team of skilled professionals committed to delivering high-quality work.
-        
-        Client-Centric Approach: We prioritize your objectives and work collaboratively to achieve them.`
+        question: "Does Emarq provide SEO services for businesses in Dubai?",
+        answer: `Yes! Emarq offers comprehensive SEO strategies, including on-page SEO, keyword
+        research, link building, and content optimization to improve your website’s visibility and
+        ranking on search engines.`
       },
       {
         id: "item-5",
-        question: "Can you assist with both studio and on-location shoots?",
-        answer: `Yes, we specialize in both studio and on-location photography and videography. Whether it's a product shoot, corporate event, or personal portrait session, our team ensures professional results that align with your brand's vision.`
+        question: "What makes Emarq different from other marketing agencies in Dubai?",
+        answer: `Emarq combines creative production and performance marketing with a results-driven
+        approach, ensuring high-quality content and measurable growth for businesses across
+        Dubai and the UAE.`
       },
       {
         id: "item-6",
-        question: "How do I get started with your services?",
-        answer: `Getting started is simple:
-
-        - Contact Us: Reach out via our website or call us directly.
-        
-        - Consultation: We'll schedule a meeting to understand your needs and objectives.
-        
-        - Proposal: Receive a customized plan and quote tailored to your requirements.
-        
-        - Execution: Once approved, our team begins working on your project, keeping you informed at every stage.
-        
-        - Let us help you elevate your brand and achieve your marketing goals.`
+        question: "Can Emarq manage my social media marketing campaigns?",
+        answer: `Absolutely. We handle end-to-end social media marketing for platforms like Instagram,
+        Facebook, TikTok, Snapchat, and LinkedIn, including content planning, posting,
+        engagement, and analytics.`
+      },
+      {
+        id: "item-7",
+        question: "Do you provide influencer marketing services in Dubai?",
+        answer: `Yes, Emarq connects brands with relevant influencers in Dubai to create authentic
+        campaigns that drive engagement and brand awareness.`
+      },
+      {
+        id: "item-8",
+        question: "Does Emarq cover events and product launches for photography and videography?",
+        answer: `Yes. We provide professional event coverage, product shoots, and launch
+        documentation with high-quality photos and videos suitable for social media, websites,
+        and marketing campaigns.`
+      },
+      {
+        id: "item-9",
+        question: "How does Emarq ensure high-quality results for content and campaigns?",
+        answer: `We follow a strategic, data-driven approach combining creativity and analytics, using
+        professional equipment and expert editors to deliver premium content that aligns with
+        your brand goals.`
+      },
+      {
+        id: "item-10",
+        question: " How can I get started with Emarq for my marketing and production needs?",
+        answer: `Simply contact us via phone, email, or our website inquiry form. We’ll schedule a
+        consultation to understand your business objectives and create a tailored marketing and
+        production plan.`
       },
     ];
 
@@ -238,10 +244,7 @@ alt=""
               <AccordionContent className="pb-[30px] pt-0">
                 <div className="[font-family:'DM_Sans',Helvetica] font-normal text-[#E8C1C5]/80 text-base tracking-[-0.20px] leading-[26px]">
                 <ul className="list-disc ml-5">
-    {itemData.answer.split("\n").map((line, index) => {
-      const trimmed = line.trim();
-      return trimmed ? <li key={index}>{trimmed.replace(/^- /, "")}</li> : null;
-    })}
+                - {itemData.answer}
   </ul>
                 </div>
               </AccordionContent>

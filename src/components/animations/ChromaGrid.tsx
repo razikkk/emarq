@@ -1,6 +1,10 @@
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import './ChromaGrid.css';
+import {  FaWhatsapp } from 'react-icons/fa';
+import { BiLogoGmail } from "react-icons/bi";
+
+
 
 export const ChromaGrid = ({
   items,
@@ -160,8 +164,18 @@ export const ChromaGrid = ({
           </div>
           <footer className="chroma-info">
             <h3 className="name">{c.title}</h3>
-            {c.handle && <span className="handle">{c.handle}</span>}
-            <p className="role">{c.subtitle}</p>
+            <div className="flex items-center gap-3 mt-2">
+  {c.whatsapp && (
+    <a href={c.whatsapp} target="_blank" rel="noopener noreferrer">
+        <FaWhatsapp className="text-gray-500 w-6 h-6" />
+    </a>
+  )}
+  {c.gmail && (
+    <a href={c.gmail} target="_blank" rel="noopener noreferrer">
+        <BiLogoGmail className="text-gray-500 w-6 h-6" />
+    </a>
+  )}
+</div>            <p className="role">{c.subtitle}</p>
             {c.location && <span className="location">{c.location}</span>}
           </footer>
         </article>
