@@ -92,7 +92,18 @@ const items = [
     borderColor: "#3E2F56",
     gradient: "linear-gradient(145deg, #3E2F56, #000)",
     url: ""
-  }
+  },
+  {
+    image: "/profile.png",
+    title: " Rekha Sunil",
+    subtitle: "Director-Finance ",
+    whatsapp: "https://wa.me/971567096566", // replace with full number
+    gmail: "mailtorekha@emarq.ae",
+    borderColor: "#3E2F56",
+    gradient: "linear-gradient(145deg, #3E2F56, #000)",
+    url: ""
+  },
+  
 ];
 
 const TeamMembers = () => {
@@ -236,6 +247,7 @@ const TeamMembers = () => {
     damping={0.45}
     fadeOut={0.6}
     ease="power3.out"
+    columns={4}
   />
 </div>
 

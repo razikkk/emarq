@@ -32,11 +32,13 @@ export const HeroSection: React.FC = () => {
 
    
 <h1
-  className="flex flex-col items-center gap-2 relative z-10 
-  text-[86px] font-normal leading-[90px] tracking-[-3.8px] 
-  text-[#E8C1C5] mt-[47px] 
-  max-lg:text-[60px] max-lg:leading-[70px] 
-  max-md:text-[36px] max-md:leading-[44px] max-md:mt-6"
+    className="
+    flex flex-col items-center gap-2 relative z-10 
+    text-[86px] font-normal leading-[90px] 
+    tracking-[-3.8px] text-[#E8C1C5] mt-[47px] 
+    max-lg:text-[60px] max-lg:leading-[70px] max-lg:tracking-[-2px]
+    max-md:text-[36px] max-md:leading-[44px] max-md:tracking-[-1px] max-md:mt-6
+  "
 >
   {/* First line */}
   <BlurText
@@ -121,7 +123,7 @@ export const HeroSection: React.FC = () => {
     />   */}
 
     {/* Decoration */}
-    <div className="absolute bottom-0 left-0 w-full h-[240px] max-md:h-12 z-20">
+    <div className="absolute bottom-0  left-0 w-full h-[240px] max-md:h-12 z-20">
   <div
     className="w-full h-full"
     style={{
@@ -131,10 +133,10 @@ export const HeroSection: React.FC = () => {
 </div>
 
 {/* Existing decoration image */}
-<div className="relative z-10 w-full max-w-lg mt-5 max-md:mt-3">
+<div className="relative z-10 w-full max-w-lg mt-5 max-md:mt-3 hidden md:block ">
   <img
     src="https://api.builder.io/api/v1/image/assets/TEMP/346ba80e40fe720d782e6c494fd1452e0ee98717?placeholderIfAbsent=true"
-    className="aspect-[5.38] object-contain w-full"
+    className="aspect-[5.38] object-contain w-full "
     alt="Hero bottom decoration"
   />
 </div>

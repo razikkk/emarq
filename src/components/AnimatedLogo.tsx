@@ -1,66 +1,103 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface AnimatedLogoProps {
   onFinish?: () => void;
 }
 
 const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ onFinish }) => {
-  const [showIntro, setShowIntro] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const [loadingDone, setLoadingDone] = useState(false);
+  const [showFinal, setShowFinal] = useState(false); // for final zoom/fade
 
+  // Progress counter
   useEffect(() => {
-    if (!showIntro && onFinish) {
-      onFinish(); // call parent handler when intro finishes
-    }
-  }, [showIntro, onFinish]);
+    if (progress < 100) {
+      const interval = setInterval(() => {
+        setProgress((prev) => Math.min(prev + 1, 100));
+      }, 30);
+      return () => clearInterval(interval);
+    } else if (!loadingDone) {
+      setLoadingDone(true);
 
-  if (!showIntro) return null;
+      // Remove loader, show final text+image
+      setShowFinal(true);
+
+      // Notify parent immediately
+      if (onFinish) onFinish();
+    }
+  }, [progress, loadingDone, onFinish]);
 
   return (
-    <motion.div
-      className="fixed inset-0 flex items-center justify-center bg-[#3E2F56] z-[9999]"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-    >
-      <motion.div
-        initial={{ scale: 1, x: 0, y: 0, opacity: 1 }}
-        animate={{
-          scale: [1, 1.3],
-          opacity: [1, 0],
-          x: 0,
-          y: 0,
-        }}
-        transition={{
-          duration: 1.5,
-          ease: "easeInOut",
-          delay: 3,
-        }}
-        onAnimationComplete={() => setShowIntro(false)}
-        className="flex"
-      >
-        {["E", "M", "A", "R"].map((letter, index) => (
-          <motion.span
-            key={index}
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: index * 0.3 }}
-            className="text-white font-leagueSpartan font-bold text-5xl md:text-8xl"
-          >
-            {letter}
-          </motion.span>
-        ))}
+    <AnimatePresence>
+      {!loadingDone ? (
+        // Loader view
+        <motion.div
+          key="loader"
+          className="fixed inset-0 flex flex-col items-center justify-center z-[9999] bg-[#3E2F56]"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div className="flex items-center gap-1">
+            {["E", "M", "A", "R"].map((letter, index) => (
+              <span
+                key={index}
+                className="text-white font-leagueSpartan font-bold text-5xl md:text-8xl"
+              >
+                {letter}
+              </span>
+            ))}
+            <img
+              src="/q.png"
+              alt="Logo Q"
+              className="w-[155px] h-[155px] object-contain -mt-7 -ml-11"
+            />
+          </motion.div>
 
-        {/* Image replacing Q */}
-        <motion.img
-          src="/q.png"
-          alt="Logo Q"
-          className="w-[160px] h-[160px] object-contain -mt-11"
-          initial={{ x: -70, opacity: 0 }}
-          animate={{ x: -40, opacity: 1 }}
-          transition={{ delay: 4 * 0.3 }}
-        />
-      </motion.div>
-    </motion.div>
+          <div className="absolute bottom-10 w-full max-w-[90%] flex items-center">
+            <div className="relative w-full h-1">
+              <motion.div
+                className="absolute top-0 left-0 h-1 bg-[#E8C1C5]"
+                initial={{ width: "0%" }}
+                animate={{ width: `${progress}%` }}
+                transition={{ ease: "linear" }}
+              />
+            </div>
+            <span className="ml-3 text-[#E8C1C5] text-[80px] font-bold">
+              {progress}%
+            </span>
+          </div>
+        </motion.div>
+      ) : null}
+
+      {showFinal && (
+        // Final zoom + fade animation
+        <motion.div
+          key="final"
+          className="fixed inset-0 flex flex-col items-center justify-center z-[9999] bg-black"
+          initial={{ opacity: 1 }}
+          animate={{ scale: 1.1, opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          onAnimationComplete={() => setShowFinal(false)}
+        >
+          <motion.div className="flex items-center gap-1">
+            {["E", "M", "A", "R"].map((letter, index) => (
+              <span
+                key={index}
+                className="text-white font-leagueSpartan font-bold text-5xl md:text-8xl"
+              >
+                {letter}
+              </span>
+            ))}
+            <img
+              src="/q.png"
+              alt="Logo Q"
+              className="w-[155px] h-[155px] object-contain -mt-7 -ml-11"
+            />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

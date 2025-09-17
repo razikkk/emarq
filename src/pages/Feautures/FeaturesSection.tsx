@@ -22,7 +22,7 @@ const container: Variants = {
 const FeaturesSection = () => {
   return (
     <motion.div
-    className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8 -mt-40 md:-mt-60 lg:-mt-60"
+    className="mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8 -mt-60 sm:-mt-50 md:-mt-60 lg:-mt-60"
     variants={container}
     initial="hidden"
     whileInView="visible"

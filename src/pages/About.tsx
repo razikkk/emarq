@@ -29,7 +29,17 @@ const About = () => {
 const [openModal,setOpenModal] = useState(false)
   return (
     <div>
-      <div className="max-w-5xl mx-auto flex flex-col items-center text-center space-y-8">
+
+<div className="absolute bottom-0 left-0 right-0 w-screen h-[240px] max-md:h-[550px] md:h-[700px] lg:h-[240px] z-0">
+  <div
+    className="w-full h-full"
+    style={{
+      background: "#3E2F56",
+    }}
+  />
+</div>
+
+<div className="relative w-full max-w-7xl mx-auto flex flex-col items-center text-center space-y-8">
         
       <motion.div
       className="flex justify-center"
@@ -57,6 +67,8 @@ const [openModal,setOpenModal] = useState(false)
         />
       
       </motion.div>
+      
+
 
         {/* Heading */}
           <ScrollReveal 

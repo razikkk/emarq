@@ -31,6 +31,7 @@ const Index = () => {
 
   const [mousePosition,setMousePosition] = useState({x:0,y:0})
   const [loading, setLoading] = useState(true);
+  const [cursorVariant, setCursorVariant] = useState<"default" | "viewNow">("default");
 
 
   useEffect(()=>{
@@ -42,6 +43,8 @@ const Index = () => {
     return ()=> window.removeEventListener("mousemove",handleMouseMove)
   })
 
+  
+
 
 
   return (
@@ -52,21 +55,41 @@ const Index = () => {
       
     
       <motion.div
-      className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999]"
-      animate={{
-        x: mousePosition.x - 7, // center the circle
-        y: mousePosition.y - 7
-      }}
-      transition={{type:'spring', stiffness:80, damping:15}}
-      />
+  className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center"
+  animate={{
+    x: mousePosition.x,
+    y: mousePosition.y,
+    width: cursorVariant === "viewNow" ? 80 : 12,
+    height: cursorVariant === "viewNow" ? 80 : 12,
+    borderRadius: "9999px",
+    backgroundColor: "#fff",
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 200,
+    damping: 20,
+    mass: 0.5,
+  }}
+  style={{ translateX: "-50%", translateY: "-50%" }} // keep it centered
+>
+  <motion.span
+    initial={{ opacity: 0 }}
+    animate={{ opacity: cursorVariant === "viewNow" ? 1 : 0 }}
+    transition={{ duration: 0.2 }}
+    className="text-black text-xs font-semibold pointer-events-none"
+  >
+    View Now
+  </motion.span>
+</motion.div>
+
 
       {/* <AnimatedLogo/> */}
         <Navbar />
       <SmoothScroll>
      
       {loading ? (
-        <AnimatedLogo onFinish={() => setLoading(false)} />
-      ) : (
+         <AnimatedLogo onFinish={() => setLoading(false)} />
+      ):(
         <>
   <HeroSection />
 
@@ -110,7 +133,7 @@ const Index = () => {
     {/* Portfolio Section */}
     <section id="portfolio" className="flex w-full max-w-[1300px] mx-auto h-px mt-[120px] max-md:mt-10" />
     <section className="w-full px-5">
-      <Portfolio />
+      <Portfolio  setCursorVariant={setCursorVariant}/>
     </section>
 
     {/* Support Section */}

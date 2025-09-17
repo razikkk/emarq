@@ -44,7 +44,11 @@ const paragraphVariants: Variants = {
     transition: { duration: 0.8, ease: "easeOut" as const } 
   },
 };
-const Portfolio = () => {
+
+interface PortfolioProps {
+  setCursorVariant: React.Dispatch<React.SetStateAction<"default" | "viewNow">>;
+}
+const Portfolio: React.FC<PortfolioProps> = ({ setCursorVariant }) => {
   const [hoveredWord, setHoveredWord] = useState<string | null>(null);
   const containerRef = useRef(null)
   const wordsRow1 = ['Showcasing', 'Your', 'Best'];
@@ -236,7 +240,9 @@ useStackedCards()
       </motion.div>
 
             {/* Portfolio Cards */}
-        <div className=" cards relative mt-[60px] max-md:mt-10 space-y-8 sm:space-y-10 w-full max-w-6xl">
+        <div className=" cards relative mt-[60px] max-md:mt-10 space-y-8 sm:space-y-10 w-full max-w-6xl"
+          onMouseEnter={() => setCursorVariant("viewNow")}
+  onMouseLeave={() => setCursorVariant("default")}>
               <div className='custom-card card1 flex flex-col items-center'>
               <PortfolioCard
                 // year="2024"
