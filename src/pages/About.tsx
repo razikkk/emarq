@@ -30,7 +30,7 @@ const [openModal,setOpenModal] = useState(false)
   return (
     <div>
 
-<div className="absolute bottom-0 left-0 right-0 w-screen h-[240px] max-md:h-[550px] md:h-[700px] lg:h-[240px] z-0">
+<div className="absolute bottom-0 left-0 top-4 right-0 w-screen h-[240px] max-md:h-[550px] md:h-[700px] lg:h-[240px] z-0">
   <div
     className="w-full h-full"
     style={{

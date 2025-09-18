@@ -50,7 +50,13 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ onFinish }) => {
             <img
               src="/q.png"
               alt="Logo Q"
-              className="w-[155px] h-[155px] object-contain -mt-7 -ml-11"
+              className="
+              w-[90px] h-[90px]          /* mobile */
+              sm:w-[120px] sm:h-[120px]  /* small screens */
+              md:w-[155px] md:h-[155px]  /* medium and up */
+              object-contain
+              -mt-4 sm:-mt-6 md:-mt-7   
+              -ml-6 sm:-ml-8 md:-ml-11"
             />
           </motion.div>
 

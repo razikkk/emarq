@@ -225,43 +225,49 @@ const Support = () => {
           <div className="relative mt-[140px] px-4 sm:px-20">
   <div className="relative w-full max-w-[1280px] mx-auto">
     {/* Chat bubbles in a slight arc */}
-    <div className="flex justify-center relative" 
-    style={{transform: 'translateX(40px)'}}>
+    <div
+      className="flex justify-center relative"
+      style={{ transform: "translateX(0px)" }} // center for mobile
+    >
       {chatBubbles.map((bubble, index) => {
-        // Slight downward arc: parabola
-        const curve = Math.pow(index - chatBubbles.length / 2, 2) * 4; 
+        const curve = Math.pow(index - chatBubbles.length / 2, 2) * 4;
         return (
           <img
             key={index}
             src={bubble.src}
             alt={`Bubble ${index}`}
-            className="w-32 h-32 object-cover rounded-[25px] -ml-8 first:ml-0 border-4 border-gray-400" // bold gray border
+            className="w-24 h-24 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 
+              object-cover rounded-[18px] 
+              -ml-8 sm:-ml-10 md:-ml-12 lg:-ml-8 first:ml-0 
+              border-4 border-gray-400 sm:border-2 md:border-3 lg:border-4 -mt-10"
             style={{
-              top: `${curve + 50}px`, // small downward arc
-              position: 'relative',
-              zIndex: chatBubbles.length - index, // ensure proper overlap
+              top: `${curve + 40}px`,
+              position: "relative",
+              zIndex: chatBubbles.length - index,
             }}
           />
         );
       })}
     </div>
 
-    {/* Chat Labels */}
-    <div className="absolute w-[130px] h-[38px] top-[15px] left-[707px] bg-[#4f1ad6] rounded-[15px] rotate-[14deg]">
-      <div className="absolute w-[111px] h-[21px] top-2 left-2.5 font-medium text-white text-base leading-[26px] whitespace-nowrap">
+    {/* Chat Labels (hidden on mobile) */}
+    <div className="hidden sm:block absolute w-[90px] sm:w-[110px] md:w-[130px] h-[28px] sm:h-[34px] md:h-[38px]   top-[-10px] sm:top-[0px] md:top-[5px]
+ left-[30%] sm:left-[55%] md:left-[707px] bg-[#4f1ad6] rounded-[15px] sm:rounded-[14px] md:rounded-[15px] rotate-[10deg] sm:rotate-[12deg] md:rotate-[14deg]">
+      <div className="absolute w-[70px] sm:w-[90px] md:w-[111px] top-1.5 sm:top-2 left-2 font-medium text-white text-xs sm:text-sm md:text-base leading-[20px] sm:leading-[24px] md:leading-[26px] whitespace-nowrap">
         Problem Solved
       </div>
-      <div className="absolute w-2.5 h-2.5 top-[33px] left-[23px] bg-[#4f1ad6] -rotate-45" />
+      <div className="absolute w-2 h-2 sm:w-2.5 sm:h-2.5 top-[25px] sm:top-[30px] left-[15px] sm:left-[20px] bg-[#4f1ad6] -rotate-45" />
     </div>
 
-    <div className="absolute w-[102px] h-[38px] top-[7px] left-[109px] bg-[#0080ff] rounded-[15px] rotate-[-8deg]">
-      <div className="absolute w-[83px] h-[21px] top-2 left-2.5 font-medium text-white text-base leading-[26px] whitespace-nowrap">
+    <div className="hidden sm:block absolute w-[80px] sm:w-[95px] md:w-[102px] h-[26px] sm:h-[32px] md:h-[38px]top-[-10px] sm:top-[0px] md:top-[5px] left-[10px] sm:left-[50px] md:left-[109px] bg-[#0080ff] rounded-[12px] sm:rounded-[14px] md:rounded-[15px] rotate-[-6deg] sm:rotate-[-7deg] md:rotate-[-8deg]">
+      <div className="absolute w-[65px] sm:w-[80px] md:w-[83px] top-1.5 sm:top-1 left-2 font-medium text-white text-xs sm:text-sm md:text-base leading-[20px] sm:leading-[24px] md:leading-[26px] whitespace-nowrap">
         Hey, It's me!
       </div>
-      <div className="absolute w-2.5 h-2.5 top-[33px] left-[23px] bg-[#0080ff] -rotate-45" />
+      <div className="absolute w-2 h-2 sm:w-2.5 sm:h-2.5 top-[23px] sm:top-[28px] left-[15px] sm:left-[20px] bg-[#0080ff] -rotate-45" />
     </div>
   </div>
 </div>
+
 
 
 

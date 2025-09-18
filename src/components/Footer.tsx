@@ -33,21 +33,22 @@ export const Footer: React.FC = () => {
       
       {/* EMARQ Center Left */}
       <motion.div
-        className="w-[100px] h-[50px] md:w-[180px] md:h-[70px] rounded-lg flex items-center justify-center"
-        initial={{ opacity: 0, scale: 0.8, y: -10 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.5 }}
-      >
-        <h1 className="font-leagueSpartan font-bold text-2xl md:text-4xl text-white text-center flex items-center justify-center gap-1 ">
-          EMAR
-          <img
-    src="/q.png"
-    alt="Q"
-    className="w-26 h-26 md:w-16 md:h-16 object-contain -ml-5 mb-2"
-  />
-        </h1>
-      </motion.div>
+  className="w-[120px] h-[50px] md:w-[180px] md:h-[70px] rounded-lg flex items-center justify-center"
+  initial={{ opacity: 0, scale: 0.8, y: -10 }}
+  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  viewport={{ once: true, amount: 0.5 }}
+>
+  <h1 className="font-leagueSpartan font-bold text-2xl md:text-4xl text-white text-center flex items-center justify-center gap-1">
+    <span className="pl-2 md:pl-0">EMAR</span>
+    <img
+      src="/q.png"
+      alt="Q"
+      className="w-11 h-11 md:w-16 md:h-16 object-contain -ml-4 md:-ml-5 mb-2 md:mb-2"
+    />
+  </h1>
+</motion.div>
+
   
       {/* Links */}
       <motion.div

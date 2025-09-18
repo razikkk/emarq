@@ -222,128 +222,120 @@ const Services = () => {
   
   
   return(
-    <div>
-    <motion.div
-      className="flex justify-center"
-      variants={highlightVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-    >
-
-         <HighlightTag
-           variant="dotted"
-           className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-           title={
-             <span className="bg-gradient-to-r from-[#3E2F56] to-[#8A6FB3] bg-clip-text text-transparent">
-               Services
-         </span>
-           }
-           icon={  <svg
-             xmlns="http://www.w3.org/2000/svg"
-             width={16}
-             height={16}
-             fill="currentColor"
-             className="bi bi-gear"
-           viewBox="0 0 16 16"
-          >
-             <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
-            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
-      </svg>
-          
-       }
-          
-        />
-      
-      </motion.div>
-   <div ref={stackAreaRef} className="w-full relative flex">
-      {/* Left Section */}
-      <div className="h-screen flex-[0.5] flex flex-col justify-center px-10">
-  {/* Title */}
-  <motion.h1
-      className="text-[84px] font-extrabold leading-[88px] max-w-[420px] font-poppins text-white flex flex-wrap"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={containerVariants}
-    >
-      {words.map((word, index) => (
-        <motion.span
-          key={index}
-          className="mr-2"
-          variants={wordVariants}
-        >
-          {word}
-        </motion.span>
-      ))}
-    </motion.h1>
-
-  {/* Description */}
-  <motion.p
-      className="mt-6 max-w-[420px] text-[15px] font-medium text-gray-300 leading-relaxed tracking-wide flex flex-wrap"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      variants={pContainerVariants}
-    >
-      {paragraph.map((word, index) => (
-        <motion.span key={index} className="mr-1" variants={pWordVariants}>
-          {word}{" "}
-        </motion.span>
-      ))}
-    </motion.p>
-
-  {/* Button */}
+<div>
+  {/* Services Heading */}
   <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true, amount: 0.5 }}
-  transition={{ duration: 0.6, delay: 1.2 }} // delay after header & paragraphs
->
-<InteractiveHoverButton className='mt-[20px]' onClick={()=> setOpenModal(true)}>See Our Magic</InteractiveHoverButton>
+    className="flex justify-center lg:justify-center"
+    variants={highlightVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+  >
+    <HighlightTag
+      variant="dotted"
+      className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+      title={
+        <span className="bg-gradient-to-r from-[#3E2F56] to-[#8A6FB3] bg-clip-text text-transparent">
+          Services
+        </span>
+      }
+      icon={<svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="currentColor" className="bi bi-gear" viewBox="0 0 16 16" > <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" /> <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" /> </svg>}
+    />
+  </motion.div>
 
+  {/* Layout Wrapper */}
+  <div
+    ref={stackAreaRef}
+    className="w-full relative flex flex-col lg:flex-row items-center lg:items-start"
+  >
+    {/* LEFT SIDE - Text */}
+    <div className="w-full lg:w-1/2 h-auto lg:h-screen flex flex-col justify-center px-6 lg:px-10 text-center lg:text-left">
+      {/* Title */}
+      <motion.h1
+        className="mt-6 lg:mt-0 text-4xl md:text-5xl lg:text-[84px] font-extrabold leading-tight lg:leading-[88px] 
+                   max-w-full lg:max-w-[420px] font-poppins text-white flex flex-wrap mx-auto lg:mx-0"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+      >
+        {words.map((word, index) => (
+          <motion.span key={index} className="mr-2" variants={wordVariants}>
+            {word}
+          </motion.span>
+        ))}
+      </motion.h1>
+
+      {/* Description */}
+      <motion.p
+        className="mt-6 max-w-xl lg:max-w-[420px] text-base md:text-lg text-gray-300 
+                   leading-relaxed tracking-wide mx-auto lg:mx-0"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={pContainerVariants}
+      >
+        {paragraph.map((word, index) => (
+          <motion.span key={index} className="mr-1" variants={pWordVariants}>
+            {word}{" "}
+          </motion.span>
+        ))}
+      </motion.p>
+
+      {/* Button */}
+      <motion.div
+        className="mt-6"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
+      >
+        <InteractiveHoverButton onClick={() => setOpenModal(true)}>
+          See Our Magic
+        </InteractiveHoverButton>
       </motion.div>
-      <ContactModal
-  isOpen={openModal}
-  onClose={() => setOpenModal(false)}
-/>
+      <ContactModal isOpen={openModal} onClose={() => setOpenModal(false)} />
+    </div>
+
+    {/* RIGHT SIDE - Cards */}
+    <div className="relative w-full lg:w-1/2 h-[70vh] lg:h-screen flex items-center justify-center">
+      {cardsData.map((card, i) => (
+        <div
+          key={i}
+          ref={(el) => {
+            if (el) cardsRef.current[i] = el;
+          }}
+          className="absolute top-1/2 left-1/2 w-[90%] max-w-[350px] h-[400px] 
+                     -translate-x-1/2 -translate-y-1/2 
+                     rounded-[25px] p-6 flex flex-col justify-between items-center 
+                     text-white backdrop-blur-md bg-gradient-to-br from-[#3E2F56]/80 to-[#8A6FB3]/50 
+                     border border-white/20 shadow-lg hover:scale-105 transition-transform duration-300"
+        >
+          {/* Icon */}
+          <div
+            className={`w-16 h-16 flex items-center justify-center rounded-full p-4 shadow-md ${card.color}`}
+          >
+            {card.icon}
+          </div>
+
+          {/* Title + Description */}
+          <div className="text-center mt-4">
+            <h3 className="text-2xl font-bold font-poppins mb-2">
+              {card.text}
+            </h3>
+            <p className="text-sm text-white/70 leading-relaxed max-w-[280px] mx-auto">
+              {card.description}
+            </p>
+          </div>
+
+          {/* Gradient underline */}
+          <div className="w-16 h-1 mt-4 rounded-full bg-gradient-to-r from-purple-400 to-pink-500" />
+        </div>
+      ))}
+    </div>
+  </div>
 </div>
 
-      {/* Right Section */}
-      <div className="h-screen flex-[0.5] relative">
-  {cardsData.map((card, i) => (
-    <div
-      key={i}
-      ref={(el) => {
-        if (el) cardsRef.current[i] = el;
-      }}
-      className="absolute top-1/2 left-1/2 w-[350px] h-[400px] 
-      -translate-x-1/2 -translate-y-1/2 
-      rounded-[25px] p-6 flex flex-col justify-between items-center 
-      text-white backdrop-blur-md bg-gradient-to-br from-[#3E2F56]/80 to-[#8A6FB3]/50 
-      border border-white/20 shadow-lg hover:scale-105 transition-transform duration-300"
-    >
-      {/* Icon */}
-      <div className={`w-16 h-16 flex items-center justify-center rounded-full p-4 shadow-md ${card.color}`}>
-        {card.icon}
-      </div>
-
-      {/* Title + Description */}
-      <div className="text-center mt-4">
-        <h3 className="text-2xl font-bold font-poppins mb-2">{card.text}</h3>
-        <p className="text-sm text-white/70 leading-relaxed max-w-[280px]">
-          {card.description}
-        </p>
-      </div>
-
-      {/* Gradient underline */}
-      <div className="w-16 h-1 mt-4 rounded-full bg-gradient-to-r from-purple-400 to-pink-500" />
-    </div>
-  ))}
-</div>
-
-    </div>
-    </div>
   )
 //   return (
 //      //<div>

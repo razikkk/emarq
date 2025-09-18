@@ -240,7 +240,7 @@ const TeamMembers = () => {
     </div> */}
   {/* ))}  */}
  {/* </div>  */}
- <div className='mt-6' style={{ height: '500px', position: 'relative' }}>
+ <div className='mt-6' style={{position: 'relative' }}>
   <ChromaGrid 
     items={items}
     radius={300}

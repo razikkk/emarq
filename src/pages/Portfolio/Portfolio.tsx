@@ -51,6 +51,7 @@ interface PortfolioProps {
 const Portfolio: React.FC<PortfolioProps> = ({ setCursorVariant }) => {
   const [hoveredWord, setHoveredWord] = useState<string | null>(null);
   const containerRef = useRef(null)
+
   const wordsRow1 = ['Showcasing', 'Your', 'Best'];
   const wordsRow2 = ['Work', 'with', 'Pure', 'Precision.'];
   const images = [
@@ -152,6 +153,8 @@ const Portfolio: React.FC<PortfolioProps> = ({ setCursorVariant }) => {
     
       return () => container.removeEventListener("mousemove", handleMouseMove);
     }, [hoveredWord]);
+
+    
    
 useStackedCards()
 

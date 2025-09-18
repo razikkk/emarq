@@ -243,118 +243,115 @@ const AboutSection = () => {
 
   return (
     <div className="relative">
-      {/* Section title */}
-      
-      <motion.div
+    {/* Section title */}
+    <motion.div
       className="flex justify-center pt-20"
       variants={highlightVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-        <HighlightTag
-          variant="dotted"
-          className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-          title={
-            <span className="bg-gradient-to-r from-[#3E2F56] to-[#8A6FB3] bg-clip-text text-transparent">
-              About Emarq
-            </span>
-          }
-          icon={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              fill="currentColor"
-              className="bi bi-buildings"
-              viewBox="0 0 16 16"
-            >
-              <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022M6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z" />
-              <path d="M2 11h1v1H2zm2 0h1v1H4zm-2 2h1v1H2zm2 0h1v1H4zm4-4h1v1H8zm2 0h1v1h-1zm-2 2h1v1H8zm2 0h1v1h-1zm2-2h1v1h-1zm0 2h1v1h-1zM8 7h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zM8 5h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zm0-2h1v1h-1z" />
-            </svg>
-          }
-        />
-        </motion.div>
-      
-
-      {/* Content with GSAP pinning */}
-      <div
-        ref={sectionRef}
-        className="max-w-[1200px] mx-auto px-4 py-[101px] grid grid-cols-1 lg:grid-cols-2 gap-12"
-      >
-        {/* LEFT CONTENT (scrolls) */}
-    <div ref={leftRef} className="space-y-[58px]">
-  {featureCards.map((card, index) => (
-    <Card
-      key={index}
-      className="backdrop-blur-md bg-white/5 rounded-[30px] border border-[#E8C1C5]/30 shadow-[0px_10px_22px_-1.75px_rgba(0,0,0,0.3),0px_2.29px_5.03px_-1.17px_rgba(0,0,0,0.15),0px_0.6px_1.32px_-0.58px_rgba(0,0,0,0.1)] overflow-hidden"
+      <HighlightTag
+        variant="dotted"
+        className="border-2 border-white/80 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+        title={
+          <span className="bg-gradient-to-r from-[#3E2F56] to-[#8A6FB3] bg-clip-text text-transparent">
+            About Emarq
+          </span>
+        }
+        icon={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="currentColor"
+            className="bi bi-buildings"
+            viewBox="0 0 16 16"
+          >
+            <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022M6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z" />
+            <path d="M2 11h1v1H2zm2 0h1v1H4zm-2 2h1v1H2zm2 0h1v1H4zm4-4h1v1H8zm2 0h1v1h-1zm-2 2h1v1H8zm2 0h1v1h-1zm2-2h1v1h-1zm0 2h1v1h-1zM8 7h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zM8 5h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zm0-2h1v1h-1z" />
+          </svg>
+        }
+      />
+    </motion.div>
+  
+    {/* Content with GSAP pinning */}
+    <div
+      ref={sectionRef}
+      className="max-w-[1200px] mx-auto px-4 py-12 sm:py-16 lg:py-[101px] grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12"
     >
-      <CardContent className="p-2">
-        <div className="rounded-[22px] border border-[#E8C1C5]/30 shadow-[inset_0px_10px_5px_-1px_rgba(232,193,197,0.25)] [background:radial-gradient(50%_50%_at_50%_50%,rgba(232,193,197,0.15)_0%,rgba(62,47,86,1)_100%)] p-[27px] space-y-[74px]">
-          
-          {/* Top Row */}
-          <div className="flex items-start justify-between">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-stars text-[#E8C1C5]" viewBox="0 0 16 16">
-  <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
-</svg>
-<Badge
-  className="rounded-[40px] bg-[#E8C1C5] text-[#3E2F56] px-3 py-1 hover:bg-[#E8C1C5] hover:text-[#3E2F56]"
->
-  <span className="text-[12px] sm:text-[13px] md:text-[14px] font-semibold">
-    {card.actionLabel}
-  </span>
-</Badge>
-
-          </div>
-
-          {/* Text Section */}
-          <div className="space-y-[27px]">
-            <div className="space-y-2 -mt-10">
-              <h3 className="font-medium text-[#E8C1C5] text-[14px] sm:text-[15px] md:text-[16px]">
-                {card.title}
-              </h3>
-              <div className="w-[207px] h-px bg-gradient-to-r from-transparent via-[#E8C1C5]/50 to-transparent" />
-              <p className="font-normal text-[#E8C1C5]/70 text-[13px] sm:text-[14px] md:text-[14.4px]">
-                {card.description}
-              </p>
-            </div>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-3">
-              {card.tags.map((tag, tagIndex) => (
-               <Badge
-               key={tagIndex}
-               className="rounded-[40px] bg-[#E8C1C5] text-[#3E2F56] px-3 py-1 hover:bg-[#E8C1C5] hover:text-[#3E2F56]"
-             >
-               <span className="text-[12px] sm:text-[13px] md:text-[14px] font-medium">
-                 {tag}
-               </span>
-             </Badge>
-              ))}
-            </div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  ))}
-</div>
-
-
-        {/* RIGHT IMAGE (pinned with GSAP) */}
-        <div className="right-panel flex justify-center items-start">
-  <img
-    src="/about.jpg"
-    className="object-cover w-[500px] h-[600px] rounded-[30px] border-8 border-[#E8C1C5] max-md:w-full max-md:h-auto max-md:mt-10"
-    alt="About us"
-  />
-</div>
-
-
-
-
+      {/* LEFT CONTENT (scrolls) */}
+      <div ref={leftRef} className="space-y-8 sm:space-y-12 lg:space-y-[58px]">
+        {featureCards.map((card, index) => (
+          <Card
+            key={index}
+            className="backdrop-blur-md bg-white/5 rounded-[30px] border border-[#E8C1C5]/30 shadow-[0px_10px_22px_-1.75px_rgba(0,0,0,0.3),0px_2.29px_5.03px_-1.17px_rgba(0,0,0,0.15),0px_0.6px_1.32px_-0.58px_rgba(0,0,0,0.1)] overflow-hidden"
+          >
+            <CardContent className="p-2">
+              <div className="rounded-[22px] border border-[#E8C1C5]/30 shadow-[inset_0px_10px_5px_-1px_rgba(232,193,197,0.25)] [background:radial-gradient(50%_50%_at_50%_50%,rgba(232,193,197,0.15)_0%,rgba(62,47,86,1)_100%)] p-[27px] space-y-[40px] sm:space-y-[60px] lg:space-y-[74px]">
+                {/* Top Row */}
+                <div className="flex items-start justify-between">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    className="bi bi-stars text-[#E8C1C5]"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z" />
+                  </svg>
+                  <Badge className="rounded-[40px] bg-[#E8C1C5] text-[#3E2F56] px-3 py-1 hover:bg-[#E8C1C5] hover:text-[#3E2F56]">
+                    <span className="text-[12px] sm:text-[13px] md:text-[14px] font-semibold">
+                      {card.actionLabel}
+                    </span>
+                  </Badge>
+                </div>
+  
+                {/* Text Section */}
+                <div className="space-y-[27px]">
+                  <div className="space-y-2 -mt-6 sm:-mt-8 lg:-mt-10">
+                    <h3 className="font-medium text-[#E8C1C5] text-[14px] sm:text-[15px] md:text-[16px]">
+                      {card.title}
+                    </h3>
+                    <div className="w-[207px] h-px bg-gradient-to-r from-transparent via-[#E8C1C5]/50 to-transparent" />
+                    <p className="font-normal text-[#E8C1C5]/70 text-[13px] sm:text-[14px] md:text-[14.4px]">
+                      {card.description}
+                    </p>
+                  </div>
+  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-3">
+                    {card.tags.map((tag, tagIndex) => (
+                      <Badge
+                        key={tagIndex}
+                        className="rounded-[40px] bg-[#E8C1C5] text-[#3E2F56] px-3 py-1 hover:bg-[#E8C1C5] hover:text-[#3E2F56]"
+                      >
+                        <span className="text-[12px] sm:text-[13px] md:text-[14px] font-medium">
+                          {tag}
+                        </span>
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
+  
+      {/* RIGHT IMAGE */}
+      <div className="right-panel hidden lg:flex  flex justify-center items-start -mt-[950px] lg:mt-0">
+      <img
+        src="/about.jpg"
+        className="object-cover w-full sm:w-[400px] md:w-[500px] h-auto md:h-[600px] 
+                   rounded-[30px] border-4 sm:border-6 md:border-8 border-[#E8C1C5]"
+        alt="About us"
+      />
     </div>
-
+    </div>
+  </div>
+  
   );
 };
 
