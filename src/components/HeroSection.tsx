@@ -86,7 +86,7 @@ export const HeroSection: React.FC = () => {
 
 
     {/* Buttons */}
-    <div className="relative z-100 flex flex-wrap justify-center gap-3 font-medium tracking-[-0.5px] mt-[42px] max-md:mt-6">
+    <div className="relative z-50 flex flex-wrap justify-center gap-3 font-medium tracking-[-0.5px] mt-[42px] max-md:mt-6">
       {/* <Button variant="default" className="bg-white text-[#3E2F56] hover:bg-[#d8a8ad] h-12 px-5 rounded-lg"> */}
         {/* Connect With Us */}
         <BlurWrapper delay={200}>

@@ -14,7 +14,6 @@ import ComparisonSection from "./Comparison/ComparisonSection";
 import Testimonial from "./Testimonial/Testimonial";
 import Faq from "./Faq/Faq";
 import Contact from "./CTA/Contact";
-import AnimatedLogo from "@/components/AnimatedLogo";
 import { useEffect, useState } from "react";
 import {motion} from 'framer-motion'
 import SmoothScroll from "@/components/ui/SmoothScroll";
@@ -24,6 +23,7 @@ import LightRays from "@/components/animations/LightRays";
 import Particles from "@/components/animations/Particles";
 import ThreeDBackground from "@/components/ui/3dBackground";
 import Preloader from "@/components/ui/Preloader";
+import AnimatedLogo from "@/components/AnimatedLogo";
 
 
 
@@ -84,13 +84,12 @@ const Index = () => {
 
 
       {/* <AnimatedLogo/> */}
-        <Navbar />
       <SmoothScroll>
+         <AnimatedLogo>
+        <Navbar />
      
-      {loading ? (
-         <AnimatedLogo onFinish={() => setLoading(false)} />
-      ):(
-        <>
+      
+     
   <HeroSection />
 
   <main>
@@ -176,8 +175,8 @@ const Index = () => {
   </main>
 
   <Footer />
-  </>
-      )}
+
+  </AnimatedLogo>
 
    
   
