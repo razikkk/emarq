@@ -125,7 +125,7 @@ const Index = () => {
     </section>
 
     {/* Services Section */}
-    <section className=" w-full max-w-[1400px] mx-auto overflow-hidden mt-[123px] rounded-[20px] px-5 max-md:mt-10">
+    <section className=" w-full max-w-[1400px] mx-auto overflow-hidden mt-[123px] rounded-[20px] px-5 max-md:mt-10" id="services">
       <Services />
     </section>
 

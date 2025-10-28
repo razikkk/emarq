@@ -11,7 +11,7 @@ export const Navbar: React.FC = () => {
 
   const handleModal = () => setOpenModal(true);
 
-  const navigationItems = ["Home", "About", "Gallery", "Contact"];
+  const navigationItems = ["Home", "About", "Contact"];
 
   return (
     <header className="fixed w-full top-6 left-0 z-50 flex justify-center"
@@ -40,7 +40,8 @@ export const Navbar: React.FC = () => {
 
         {/* Right Menu */}
         <nav className="flex items-center gap-6 text-white/70 text-lg">
-          <span className="cursor-pointer hover:text-white transition" onClick={() => window.open("https://emarq-gallery.vercel.app", "_blank")}>Gallery</span>
+          <span className="cursor-pointer hover:text-white transition" onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}>
+Services</span>
           <span className="text-white/90">•</span>
           <span className="cursor-pointer hover:text-white transition" onClick={handleModal}>Contact</span>
         </nav>

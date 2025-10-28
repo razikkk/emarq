@@ -257,9 +257,9 @@ useStackedCards()
                   { icon: "https://api.builder.io/api/v1/image/assets/TEMP/32a4530ec069805e3ebae1d9d7551c98664be11f?placeholderIfAbsent=true", text: "Brand Consistency" }
                 ]}
                 tags={["Product", "Photography"]}
-                image1="/product1.PNG"
-                image2="/product2.PNG"
-                imageClassName="rounded-xl mx-auto"
+                // image1="/product1.PNG"
+                // image2="/product2.PNG"
+                // imageClassName="rounded-xl mx-auto"
               />
              </div>
              <div className='custom-card card2'>
@@ -273,9 +273,9 @@ useStackedCards()
                   { icon: "https://api.builder.io/api/v1/image/assets/TEMP/f9d73010b28d691da8c603afb2320d23cdfe4ed4?placeholderIfAbsent=true", text: "Power & Precision" }
                 ]}
                 tags={["Luxury", "Automotive"]}
-                image1="/automotive1.JPG"
-                image2="/automotive2.JPG"
-                imageClassName="rounded-xl mx-auto"
+                // image1="/automotive1.JPG"
+                // image2="/automotive2.JPG"
+                // imageClassName="rounded-xl mx-auto"
               />
               </div>
               <div className='custom-card card3'>             
@@ -289,9 +289,9 @@ useStackedCards()
                   { icon: "https://api.builder.io/api/v1/image/assets/TEMP/0f8e561b863c3fae3f6c405330df0090556a5c96?placeholderIfAbsent=true", text: "Appetite Appeal" }
                 ]}
                 tags={["Culinary", "Gourmet"]}
-                image1="/food1.PNG"
-                image2="/food2.PNG"
-                imageClassName="rounded-xl mx-auto"
+                // image1="/food1.PNG"
+                // image2="/food2.PNG"
+                // imageClassName="rounded-xl mx-auto"
               />
 </div>
 <div className='custom-card card4'>             
@@ -305,9 +305,9 @@ useStackedCards()
                   { icon: "https://api.builder.io/api/v1/image/assets/TEMP/0f8e561b863c3fae3f6c405330df0090556a5c96?placeholderIfAbsent=true", text: "Editorial Quality" }
                 ]}
                 tags={["Fashion", "Editorial"]}
-                image1="/model1.JPG"
-                image2="/model2.JPEG"
-                imageClassName="rounded-xl mx-auto"
+                // image1="/model1.JPG"
+                // image2="/model2.JPEG"
+                // imageClassName="rounded-xl mx-auto"
               />
 </div>
             </div> 
