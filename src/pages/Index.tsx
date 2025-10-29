@@ -24,6 +24,7 @@ import Particles from "@/components/animations/Particles";
 import ThreeDBackground from "@/components/ui/3dBackground";
 import Preloader from "@/components/ui/Preloader";
 import AnimatedLogo from "@/components/AnimatedLogo";
+import UnderConstruction from "./underConstruction/UnderConstruction";
 
 
 
@@ -45,7 +46,11 @@ const Index = () => {
 
   
 
+  const siteUnderConstruction = true; // change to false when done
 
+  if (siteUnderConstruction) {
+    return <UnderConstruction />;
+  }
 
   return (
    
@@ -85,7 +90,9 @@ const Index = () => {
 
       {/* <AnimatedLogo/> */}
       <SmoothScroll>
-         <AnimatedLogo>
+         {/* <AnimatedLogo> */}
+
+         
         <Navbar />
      
       
@@ -125,7 +132,7 @@ const Index = () => {
     </section>
 
     {/* Services Section */}
-    <section className=" w-full max-w-[1400px] mx-auto overflow-hidden mt-[123px] rounded-[20px] px-5 max-md:mt-10" id="services">
+    <section className=" w-full max-w-[1400px] mx-auto overflow-hidden mt-[123px] rounded-[20px] px-5 max-md:mt-10">
       <Services />
     </section>
 
@@ -176,7 +183,7 @@ const Index = () => {
 
   <Footer />
 
-  </AnimatedLogo>
+  {/* </AnimatedLogo> */}
 
    
   
