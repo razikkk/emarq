@@ -46,7 +46,7 @@ const Index = () => {
 
   
 
-  const siteUnderConstruction = false; // change to false when done
+  const siteUnderConstruction = true; // change to false when done
 
   if (siteUnderConstruction) {
     return <UnderConstruction />;
